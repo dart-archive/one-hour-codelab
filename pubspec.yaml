@@ -1,0 +1,4 @@
+name: try_dart_samples
+description: A sample web application
+dependencies:
+  browser: any
