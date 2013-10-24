@@ -36,6 +36,9 @@ void generateBadge(Event e) {
 }
 
 set badgeName(PirateName newName) {
+  if (newName == null) {
+    return;
+  }
   query('#badgeName').text = newName.pirateName;
   window.localStorage[TREASUREKEY] = newName.toJsonString();
 }
@@ -79,7 +82,7 @@ class PirateName {
 
   String toJsonString() => '{ "f": "$_firstName", "a": "$_appellation" } ';
 
-  String get pirateName => '$_firstName the $_appellation';
+  String get pirateName => _firstName.isEmpty ? '' : '$_firstName the $_appellation';
 
   static final List names = [
     'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',

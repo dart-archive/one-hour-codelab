@@ -47,5 +47,6 @@ input[type="text"] {
   font-size: 12pt;
   margin-top: 10pt;
   margin-bottom: 10pt;
+  width: 12em;
 }
 

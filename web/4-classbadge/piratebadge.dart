@@ -56,7 +56,7 @@ class PirateName {
 
   String toString() => pirateName;
 
-  String get pirateName => '$_firstName the $_appellation';
+  String get pirateName => _firstName.isEmpty ? '' : '$_firstName the $_appellation';
 
   static final List names = [
     'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',

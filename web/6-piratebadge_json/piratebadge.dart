@@ -4,18 +4,20 @@
 
 
 // Demonstrates:
-// list, maps, random, strings, string interpolation, cascade, fat arrow,
-// named constructors.
-// optional parameters.
+// list, maps, random, strings, string interpolation
+// cascade, fat arrow, ternary operator
+// named constructors
+// optional parameters
 // a class
 // getters, setters
 // httprequest, JSON
 // local storage
 // static class-level methods/fields
-// top-level variable and functions
+// top-level variables and functions
 // typecasting with 'as'
 // futures
 // import, also with show
+// dart:core, html, math, convert and async libraries
 
 import 'dart:html';
 import 'dart:math' show Random;
@@ -65,6 +67,9 @@ void generateBadge(Event e) {
 }
 
 set badgeName(PirateName newName) {
+  if (newName == null) {
+    return;
+  }
   badgeNameElement.text = newName.pirateName;
   window.localStorage[TREASUREKEY] = newName.toJsonString();
 }
@@ -111,7 +116,7 @@ class PirateName {
 
   String toJsonString() => '{ "f": "$_firstName", "a": "$_appellation" } ';
 
-  String get pirateName => '$_firstName the $_appellation';
+  String get pirateName => _firstName.isEmpty ? '' : '$_firstName the $_appellation';
 
   static Future readyThePirates() {
     String path = 'piratenames.json';
