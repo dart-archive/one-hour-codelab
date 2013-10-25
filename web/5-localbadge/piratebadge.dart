@@ -6,22 +6,22 @@ import 'dart:html';
 import 'dart:math' show Random;
 import 'dart:convert' show JSON;
 
-final String TREASUREKEY = 'pirateName';
+final String TREASURE_KEY = 'pirateName';
 
 ButtonElement genButton;
 
 void  main() {
-  query('#inputName').onInput.listen(updateBadge);
-  genButton = query('#generateButton')
+  querySelector('#inputName').onInput.listen(updateBadge);
+  genButton = querySelector('#generateButton')
       ..onClick.listen(generateBadge);
   
-  badgeName = pirateNameFromStorage;
+  setBadgeName(getBadgeNameFromStorage());
 }
 
 void updateBadge(Event e) {
   String inputName = (e.target as InputElement).value;
   
-  badgeName = new PirateName(firstName: inputName);
+  setBadgeName(new PirateName(firstName: inputName));
   if (inputName.trim().isEmpty) {
     genButton..disabled = false
              ..text = 'Generate badge';
@@ -32,19 +32,19 @@ void updateBadge(Event e) {
 }
 
 void generateBadge(Event e) {
-  badgeName = new PirateName();
+  setBadgeName(new PirateName());
 }
 
-set badgeName(PirateName newName) {
+void setBadgeName(PirateName newName) {
   if (newName == null) {
     return;
   }
-  query('#badgeName').text = newName.pirateName;
-  window.localStorage[TREASUREKEY] = newName.toJsonString();
+  querySelector('#badgeName').text = newName.pirateName;
+  window.localStorage[TREASURE_KEY] = newName.jsonString;
 }
 
-PirateName get pirateNameFromStorage {
-  String storedName = window.localStorage[TREASUREKEY];
+PirateName getBadgeNameFromStorage() {
+  String storedName = window.localStorage[TREASURE_KEY];
   if (storedName != null) {
     return new PirateName.fromJSON(storedName);
   } else {
@@ -80,7 +80,7 @@ class PirateName {
 
   String toString() => pirateName;
 
-  String toJsonString() => '{ "f": "$_firstName", "a": "$_appellation" } ';
+  String get jsonString => '{ "f": "$_firstName", "a": "$_appellation" } ';
 
   String get pirateName => _firstName.isEmpty ? '' : '$_firstName the $_appellation';
 

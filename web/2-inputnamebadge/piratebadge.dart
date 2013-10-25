@@ -5,9 +5,9 @@
 import 'dart:html';
 
 void  main() {
-  query('#inputName').onInput.listen(updateBadge);
+  querySelector('#inputName').onInput.listen(updateBadge);
 }
 
 void updateBadge(Event e) {
-  query('#badgeName').text = (e.target as InputElement).value;
+  querySelector('#badgeName').text = (e.target as InputElement).value;
 }

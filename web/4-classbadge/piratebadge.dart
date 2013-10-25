@@ -8,15 +8,15 @@ import 'dart:math' show Random;
 ButtonElement genButton;
 
 void  main() {
-  query('#inputName').onInput.listen(updateBadge);
-  genButton = query('#generateButton')
+  querySelector('#inputName').onInput.listen(updateBadge);
+  genButton = querySelector('#generateButton')
       ..onClick.listen(generateBadge);
 }
 
 void updateBadge(Event e) {
   String inputName = (e.target as InputElement).value;
   
-  badgeName = new PirateName(firstName: inputName);
+  setBadgeName(new PirateName(firstName: inputName));
   if (inputName.trim().isEmpty) {
     genButton..disabled = false
              ..text = 'Generate badge';
@@ -27,11 +27,11 @@ void updateBadge(Event e) {
 }
 
 void generateBadge(Event e) {
-  badgeName = new PirateName();
+  setBadgeName(new PirateName());
 }
 
-set badgeName(PirateName newName) {
-  query('#badgeName').text = newName.pirateName;
+void setBadgeName(PirateName newName) {
+  querySelector('#badgeName').text = newName.pirateName;
 }
 
 class PirateName {

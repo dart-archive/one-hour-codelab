@@ -7,15 +7,15 @@ import 'dart:html';
 ButtonElement genButton;
 
 void  main() {
-  query('#inputName').onInput.listen(updateBadge);
-  genButton = query('#generateButton')
+  querySelector('#inputName').onInput.listen(updateBadge);
+  genButton = querySelector('#generateButton')
       ..onClick.listen(generateBadge);
 }
 
 void updateBadge(Event e) {
   String inputName = (e.target as InputElement).value;
   
-  badgeName = inputName;
+  setBadgeName(inputName);
   if (inputName.trim().isEmpty) {
     genButton..disabled = false
              ..text = 'Generate badge';
@@ -26,9 +26,9 @@ void updateBadge(Event e) {
 }
 
 void generateBadge(Event e) {
-  badgeName = 'Anne Bonney';
+  setBadgeName('Anne Bonney');
 }
 
-set badgeName(String newName) {
-  query('#badgeName').text = newName;
+void setBadgeName(String newName) {
+  querySelector('#badgeName').text = newName;
 }
