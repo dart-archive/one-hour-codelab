@@ -27,7 +27,7 @@ void updateBadge(Event e) {
              ..text = 'Generate badge';
   } else {
     genButton..disabled = true
-             ..text = 'Arrr! Remove the text!';
+             ..text = 'Arrr! Write yer name!';
   }
 }
 
