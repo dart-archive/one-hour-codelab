@@ -30,10 +30,10 @@ ButtonElement genButton;
 SpanElement badgeNameElement;
 
 void  main() {
-  InputElement inputField = querySelector('#inputName')
-      ..onInput.listen(updateBadge);
-  genButton = querySelector('#generateButton')
-      ..onClick.listen(generateBadge);
+  InputElement inputField = querySelector('#inputName');
+  inputField.onInput.listen(updateBadge);
+  genButton = querySelector('#generateButton');
+  genButton.onClick.listen(generateBadge);
   
   badgeNameElement = querySelector('#badgeName');
   

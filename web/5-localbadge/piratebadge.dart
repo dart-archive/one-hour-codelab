@@ -12,8 +12,8 @@ ButtonElement genButton;
 
 void  main() {
   querySelector('#inputName').onInput.listen(updateBadge);
-  genButton = querySelector('#generateButton')
-      ..onClick.listen(generateBadge);
+  genButton = querySelector('#generateButton');
+  genButton.onClick.listen(generateBadge);
   
   setBadgeName(getBadgeNameFromStorage());
 }
