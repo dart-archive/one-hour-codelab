@@ -24,7 +24,7 @@ void updateBadge(Event e) {
   setBadgeName(new PirateName(firstName: inputName));
   if (inputName.trim().isEmpty) {
     genButton..disabled = false
-             ..text = 'Generate badge';
+             ..text = 'Generate name';
   } else {
     genButton..disabled = true
              ..text = 'Arrr! Write yer name!';
