@@ -4,7 +4,7 @@ Try Dart Pirate Badge Sample
 [![Build Status](https://drone.io/github.com/dart-lang/one-hour-codelab/status.png)](https://drone.io/github.com/dart-lang/one-hour-codelab/latest)
 
 These are small Dart samples used by the new
-Try Dart 1-hour experience.
+[Try Dart 1-hour experience][codelab].
 
 Repo and testing
 ----------------
@@ -22,3 +22,6 @@ Project structure
 
 **runtests.sh:**
 	BASH script that runs dartanalyzer on all Dart source files in the web directory.
+
+
+[codelab]: https://www.dartlang.org/codelabs/darrrt/
