@@ -1,4 +1,4 @@
-name: try_dart_samples
-description: A sample web application
+name: avast_ye_pirates
+description: Write a Dart web app code lab
 dependencies:
   browser: any
