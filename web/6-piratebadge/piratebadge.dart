@@ -15,39 +15,36 @@
 // static class-level methods/fields
 // top-level variables and functions
 // typecasting with 'as'
-// futures
+// async, await
 // import, also with show
 // dart:core, html, math, convert and async libraries
 
 import 'dart:html';
 import 'dart:math' show Random;
 import 'dart:convert' show JSON;
-import 'dart:async' show Future;
 
 final String TREASURE_KEY = 'pirateName';
 
 ButtonElement genButton;
 SpanElement badgeNameElement;
 
-void  main() {
+main() async {
   InputElement inputField = querySelector('#inputName');
   inputField.onInput.listen(updateBadge);
   genButton = querySelector('#generateButton');
   genButton.onClick.listen(generateBadge);
   
   badgeNameElement = querySelector('#badgeName');
-  
-  PirateName.readyThePirates()
-    .then((_) {
-      //on success
-      inputField.disabled = false; //enable
-      genButton.disabled = false;  //enable
-      setBadgeName(getBadgeNameFromStorage());
-    })
-    .catchError((arrr) {
-      print('Error initializing pirate names: $arrr');
-      badgeNameElement.text = 'Arrr! No names.';
-    });
+
+  try {
+    await PirateName.readyThePirates();
+    inputField.disabled = false; //enable
+    genButton.disabled = false;  //enable
+    setBadgeName(getBadgeNameFromStorage());
+  } catch(arrr) {
+    print('Error initializing pirate names: $arrr');
+    badgeNameElement.text = 'Arrr! No names.';
+  }
 }
 
 void updateBadge(Event e) {
@@ -120,10 +117,10 @@ class PirateName {
 
   String get pirateName => _firstName.isEmpty ? '' : '$_firstName the $_appellation';
 
-  static Future readyThePirates() {
+  static readyThePirates() async {
     String path = 'piratenames.json';
-    return HttpRequest.getString(path)
-        .then(_parsePirateNamesFromJSON);
+    String jsonString = await HttpRequest.getString(path);
+    _parsePirateNamesFromJSON(jsonString);
   }
   
   static _parsePirateNamesFromJSON(String jsonString) {
