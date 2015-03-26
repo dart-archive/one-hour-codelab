@@ -1,0 +1,16 @@
+name: sample
+version: 0.1.0
+description: Code-lab sample.
+author: 'Dart Team <misc@dartlang.org>'
+environment:
+  sdk: '>=1.9.0 <2.0.0'
+dependencies:
+  crypto: '>=0.9.0 <0.10.0'
+  http: '>=0.11.1 <0.12.0'
+  rpc: '>=0.2.0 <0.3.0'
+  browser: '>=0.10.0+2 <0.11.0'
+  _discoveryapis_commons: '>=0.1.0 <0.2.0'
+  logging_handlers: '>=0.8.0 <0.9.0'
+dependency_overrides:
+  rpc:
+    git: git://github.com/dart-lang/rpc
