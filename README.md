@@ -13,7 +13,12 @@ Currently, drone.io tests only whether the .dart files under web/ pass static an
 Project structure
 -----------------
 
-**web/:**
+**1-blankbadge:**
+**2-inputnamebadge:**
+**3-buttonbadge:**
+**4-classbadge:**
+**5-localbadge:**
+**6-piratebadge:**
         Code samples used by the Avast Ye, Pirates code lab. Contains sub-directories to organize the samples by step.
 
 **README.md:**
@@ -21,6 +26,5 @@ Project structure
 
 **runtests.sh:**
 	BASH script that runs dartanalyzer on all Dart source files in the web directory.
-
 
 [codelab]: https://www.dartlang.org/codelabs/darrrt/
