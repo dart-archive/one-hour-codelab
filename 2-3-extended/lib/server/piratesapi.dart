@@ -19,7 +19,7 @@ class PiratesApi {
 
   PiratesApi() {
     var namesFile =
-        new File('packages/sample/server/piratenames.json');
+        new File('packages/server/server/piratenames.json');
     _properPirates = JSON.decode(namesFile.readAsStringSync());
     _shanghaier = new PirateShanghaier(_properPirates);
   }
@@ -29,7 +29,7 @@ class PiratesApi {
     // Make sure this is a real pirate...
     if (!truePirate(newPirate)) {
       throw new BadRequestError(
-          '$newPirate cannot be a pirate. 'Tis not a pirate name!');
+          '$newPirate cannot be a pirate. \'Tis not a pirate name!');
     }
 
     // Add pirate to store.
@@ -46,7 +46,7 @@ class PiratesApi {
     if (!_alivePirates.containsKey(pirate.toString().hashCode)) {
       throw new NotFoundError(
           'Could not find pirate \'${pirate.toString()}\'! '
-          'Maybe they've abandoned ship!');
+          'Maybe they\'ve abandoned ship!');
     }
     return _alivePirates.remove(pirate.toString().hashCode);
   }

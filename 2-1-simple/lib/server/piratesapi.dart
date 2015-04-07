@@ -19,7 +19,7 @@ class PiratesApi {
 
   PiratesApi() {
     var namesFile =
-        new File('packages/sample/server/piratenames.json');
+        new File('packages/server/server/piratenames.json');
     _properPirates = JSON.decode(namesFile.readAsStringSync());
     _shanghaier = new PirateShanghaier(_properPirates);
   }

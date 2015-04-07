@@ -121,7 +121,7 @@ void setBadgeName(Pirate pirate) {
   window.localStorage[TREASURE_KEY] = pirate.jsonString;
   storeButton
     ..disabled = false
-    ..text = 'Hire Pirate!';
+    ..text = 'Hire pirate!';
 }
 
 Pirate getBadgeNameFromStorage() {

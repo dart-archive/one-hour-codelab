@@ -9,7 +9,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     as commons;
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
-import 'package:sample/common/messages.dart';
+import 'package:server/common/messages.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
