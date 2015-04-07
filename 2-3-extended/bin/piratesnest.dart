@@ -9,7 +9,7 @@ import 'dart:io';
 import 'package:logging/logging.dart';
 import 'package:rpc/rpc.dart';
 
-import 'package:sample/server/piratesapi.dart';
+import 'package:server/server/piratesapi.dart';
 
 const String _API_PREFIX = '/api';
 final ApiServer _apiServer =
