@@ -190,7 +190,7 @@ class PiratesApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Pirate> shanghaiPirate() {
+  async.Future<Pirate> shanghaiAPirate() {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
