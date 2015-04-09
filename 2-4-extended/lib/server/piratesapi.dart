@@ -62,7 +62,7 @@ class PiratesApi {
     if (pirate == null) {
       throw new InternalServerError('Ran out of pirates!');
     }
-    _alivePirates[pirate.hashCode] = pirate;
+    _alivePirates[pirate.toString().hashCode] = pirate;
     return pirate;
   }
 

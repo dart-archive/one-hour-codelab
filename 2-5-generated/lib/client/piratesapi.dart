@@ -1,34 +1,27 @@
-library sample.piratesApi.client;
+library server_code_lab.piratesApi.client;
 
 import 'dart:core' as core;
 import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
-import 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    as commons;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 import 'package:server_code_lab/common/messages.dart';
-
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    show ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client piratesApi/v1';
 
-/** Not documented yet. */
 class PiratesApi {
+
   final commons.ApiRequester _requester;
 
-  PiratesApi(http.Client client,
-      {core.String rootUrl: "http://localhost:9090/",
-      core.String servicePath: "api/piratesApi/v1/"})
-      : _requester = new commons.ApiRequester(
-          client, rootUrl, servicePath, USER_AGENT);
+  PiratesApi(http.Client client, {core.String rootUrl: "http://localhost:9090/", core.String servicePath: "piratesApi/v1/"}) :
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 
   /**
-   * Not documented yet.
-   *
    * [request] - The metadata request object.
    *
    * Request parameters:
@@ -53,20 +46,20 @@ class PiratesApi {
       _body = convert.JSON.encode(PirateFactory.toJson(request));
     }
 
+
     _url = 'pirate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
     return _response.then((data) => PirateFactory.fromJson(data));
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * [name] - Path parameter: 'name'.
@@ -81,8 +74,7 @@ class PiratesApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Pirate> killPirate(
-      core.String name, core.String appellation) {
+  async.Future<Pirate> killPirate(core.String name, core.String appellation) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -94,27 +86,23 @@ class PiratesApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
     if (appellation == null) {
-      throw new core.ArgumentError(
-          "Parameter appellation is required.");
+      throw new core.ArgumentError("Parameter appellation is required.");
     }
 
-    _url = 'pirate/' +
-        commons.Escaper.ecapeVariable('$name') +
-        '/the/' +
-        commons.Escaper.ecapeVariable('$appellation');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    _url = 'pirate/' + commons.Escaper.ecapeVariable('$name') + '/the/' + commons.Escaper.ecapeVariable('$appellation');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
     return _response.then((data) => PirateFactory.fromJson(data));
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * Completes with a [core.List<Pirate>].
@@ -133,21 +121,21 @@ class PiratesApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+
+
     _url = 'pirates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        data.map((value) => PirateFactory.fromJson(value)).toList());
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => data.map((value) => PirateFactory.fromJson(value)).toList());
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * Completes with a [core.Map<core.String, core.List<core.String>>].
@@ -166,20 +154,21 @@ class PiratesApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+
+
     _url = 'proper/pirates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
     return _response.then((data) => data);
   }
 
   /**
-   * Not documented yet.
-   *
    * Request parameters:
    *
    * Completes with a [Pirate].
@@ -198,19 +187,24 @@ class PiratesApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+
+
     _url = 'shanghai';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
     return _response.then((data) => PirateFactory.fromJson(data));
   }
+
 }
 
-/** Not documented yet. */
+
+
 class PirateFactory {
   static Pirate fromJson(core.Map _json) {
     var message = new Pirate();
@@ -234,3 +228,5 @@ class PirateFactory {
     return _json;
   }
 }
+
+

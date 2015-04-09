@@ -11,9 +11,7 @@ import 'package:rpc/rpc.dart';
 
 import 'package:server_code_lab/server/piratesapi.dart';
 
-const String _API_PREFIX = '/api';
-final ApiServer _apiServer =
-    new ApiServer(apiPrefix: _API_PREFIX, prettyPrint: true);
+final ApiServer _apiServer = new ApiServer(prettyPrint: true);
 
 main() async {
   // Add a bit of logging...
@@ -25,10 +23,4 @@ main() async {
   HttpServer server =
       await HttpServer.bind(InternetAddress.ANY_IP_V4, 9090);
   server.listen(_apiServer.httpRequestHandler);
-
-  // TODO: This should be fixed before the summit. I have a fix in mind, that
-  // avoid us having to know the server url below, which can be hard to know at
-  // startup given that the client could be using proxies, NATs, etc.
-  var url = 'http://localhost:9090/';
-  _apiServer.enableDiscoveryApi(url);
 }

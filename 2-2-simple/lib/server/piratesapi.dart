@@ -19,7 +19,7 @@ class PiratesApi {
 
   PiratesApi() {
     var namesFile =
-        new File('packages/server/server/piratenames.json');
+        new File('packages/server_code_lab/server/piratenames.json');
     _properPirates = JSON.decode(namesFile.readAsStringSync());
     _shanghaier = new PirateShanghaier(_properPirates);
   }
@@ -35,7 +35,7 @@ class PiratesApi {
     if (pirate == null) {
       throw new InternalServerError('Ran out of pirates!');
     }
-    _alivePirates[pirate.hashCode] = pirate;
+    _alivePirates[pirate.toString().hashCode] = pirate;
     return pirate;
   }
 }
