@@ -10,7 +10,4 @@ dependencies:
   crypto: '>=0.9.0 <0.10.0'
   http: '>=0.11.1 <0.12.0'
   logging_handlers: '>=0.8.0 <0.9.0'
-  rpc: '>=0.2.0 <0.3.0'
-dependency_overrides:
-  rpc:
-    git: git://github.com/dart-lang/rpc
+  rpc: '>=0.3.0 <0.4.0'
