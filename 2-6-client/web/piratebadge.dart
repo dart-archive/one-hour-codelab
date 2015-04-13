@@ -79,10 +79,14 @@ void updateBadge(Event e) {
     genButton
       ..disabled = false
       ..text = 'Aye! Gimme a name!';
+    storeButton
+      ..disabled = true;
   } else {
     genButton
       ..disabled = true
       ..text = 'Arrr! Write yer name!';
+    storeButton
+      ..disabled = false;
   }
 }
 
@@ -103,7 +107,7 @@ Future selectListener(Event e) async {
 
 Future removeBadge(Event e) async {
   var idx = pirateList.selectedIndex;
-  if (idx < 0 || idx >= pirateList.size) return;
+  if (idx < 0 || idx >= pirateList.options.length) return;
   var option = pirateList.options.elementAt(idx);
   var pirate = new Pirate.fromString(option.label);
   await _api.killPirate(pirate.name, pirate.appellation);
@@ -117,7 +121,7 @@ void generateBadge(Event e) {
 }
 
 void setBadgeName(Pirate pirate) {
-  if (pirate == null) {
+  if (pirate == null || pirate.toString().isEmpty) {
     return;
   }
   badgeNameElement.text = pirate.toString();
