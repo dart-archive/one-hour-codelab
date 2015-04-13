@@ -9,5 +9,6 @@ dependencies:
   browser: '>=0.10.0+2 <0.11.0'
   crypto: '>=0.9.0 <0.10.0'
   http: '>=0.11.1 <0.12.0'
+  http_server: '>=0.9.5+1 <0.10.0'
   logging_handlers: '>=0.8.0 <0.9.0'
   rpc: '>=0.3.0 <0.4.0'
