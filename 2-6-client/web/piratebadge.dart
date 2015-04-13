@@ -95,9 +95,11 @@ Future storeBadge(Event e) async {
   if (pirateName == null || pirateName.isEmpty) return;
   var pirate = new Pirate.fromString(pirateName);
   await _api.addPirate(pirate);
-  storeButton
-    ..disabled = true
-    ..text = 'Pirate hired!';
+  new Future.delayed(new Duration(milliseconds: 300), () {
+    storeButton
+      ..disabled = true
+      ..text = 'Pirate hired!';
+  });
   refreshList();
 }
 
@@ -111,7 +113,9 @@ Future removeBadge(Event e) async {
   var option = pirateList.options.elementAt(idx);
   var pirate = new Pirate.fromString(option.label);
   await _api.killPirate(pirate.name, pirate.appellation);
-  killButton.disabled = true;
+  new Future.delayed(new Duration(milliseconds: 300), () {
+    killButton.disabled = true;
+  });
   refreshList();
 }
 

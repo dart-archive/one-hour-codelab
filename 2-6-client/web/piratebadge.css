@@ -195,7 +195,7 @@ button .ripple {
   width: 0;
   height: 0;
   pointer-events: none;
-  background: rgba(0, 0, 0, .1);
+  background: rgba(0, 0, 0, .2);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -205,7 +205,7 @@ button .ripple.show {
 }
 #storeButton .ripple,
 #killButton .ripple {
-  background: rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, .2);
 }
 @-webkit-keyframes ripple {
     from {
