@@ -57,6 +57,9 @@ Future main() async {
   killButton.onClick.listen(removeBadge);
   setBadgeName(getBadgeNameFromStorage());
   refreshList();
+
+  var buttons = querySelectorAll("button");
+  buttons.onClick.listen(addRippleEffect);
 }
 
 Future refreshList() async {
@@ -131,4 +134,25 @@ Pirate getBadgeNameFromStorage() {
   } else {
     return null;
   }
+}
+
+void addRippleEffect(MouseEvent e) {
+  var button = e.target as ButtonElement;
+  var ripple = button.querySelector(".ripple");
+
+  // we need to delete existing ripple element
+  if (ripple != null) {
+    ripple.remove();
+  }
+
+  var x = e.client.x - button.getBoundingClientRect().left;
+  var y = e.client.y - button.getBoundingClientRect().top;
+
+  ripple = new SpanElement()
+    ..classes.add("ripple")
+    ..style.left = "${x}px"
+    ..style.top = "${y}px"
+    ..classes.add("show");
+
+  button.append(ripple);
 }
