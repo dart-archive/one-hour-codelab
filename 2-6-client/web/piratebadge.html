@@ -17,33 +17,36 @@
     <h1>Pirate badge</h1>
 
     <div class="widgets">
-      <div>
+      <div class="form">
         <input type="text" id="inputName" maxlength="15" disabled>
+        <span></span>
       </div>
       <div>
         <button id="generateButton" disabled>Aye! Gimme a name!</button>
+      </div>
+    </div>
+    <div class="widgets">
+      <div class="badge">
+        <div class="greeting">
+          Arrr! Me name is
+        </div>
+        <div class="name">
+          <span id="badgeName"> </span>
+        </div>
       </div>
       <div>
         <button id="storeButton" disabled>Hire Pirate!</button>
       </div>
     </div>
-    <div class="badge">
-      <div class="greeting">
-        Arrr! Me name is
-      </div>
-      <div class="name">
-        <span id="badgeName"> </span>
-      </div>
-    </div>
     <div class="widgets">
       <div class="pirates">
         <div class="greeting">
-          Alive pirates!
+          Hired pirates!
         </div>
         <select id="pirateList" size="9"></select>
       </div>
       <div>
-        <button id="killButton" disabled>Kill pirate!</button>
+        <button id="killButton" disabled>Sack pirate!</button>
       </div>
     </div>
     <script type="application/dart" src="piratebadge.dart"></script>
