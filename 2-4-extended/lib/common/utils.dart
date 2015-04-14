@@ -21,8 +21,9 @@ List<String> _forbiddenAppellations = [
 ];
 
 // Helper method for validating whether the given pirate is truly a pirate!
-bool truePirate(Pirate pirate) => !_forbiddenAppellations
-    .contains(pirate.appellation.toLowerCase());
+bool truePirate(Pirate pirate) =>
+    pirate.name != null && pirate.name.trim().isNotEmpty &&
+    !_forbiddenAppellations.contains(pirate.appellation.toLowerCase());
 
 // Class for shanghaiing (generating) pirates.
 class PirateShanghaier {

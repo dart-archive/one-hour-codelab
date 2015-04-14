@@ -31,6 +31,9 @@ class PiratesApi {
       throw new BadRequestError(
           '$newPirate cannot be a pirate. \'Tis not a pirate name!');
     }
+    if (_alivePirates.containsKey(newPirate.toString().hashCode)) {
+      throw new BadRequestError('$newPirate is already part of your crew!');
+    }
 
     // Add pirate to store.
     _alivePirates[newPirate.toString().hashCode] = newPirate;
@@ -41,12 +44,11 @@ class PiratesApi {
       method: 'DELETE', path: 'pirate/{name}/the/{appellation}')
   Pirate killPirate(String name, String appellation) {
     var pirate = new Pirate()
-      ..name = name
-      ..appellation = appellation;
+      ..name = Uri.decodeComponent(name)
+      ..appellation = Uri.decodeComponent(appellation);
     if (!_alivePirates.containsKey(pirate.toString().hashCode)) {
       throw new NotFoundError(
-          'Could not find pirate \'${pirate.toString()}\'! '
-          'Maybe they\'ve abandoned ship!');
+          'Could not find pirate \'$pirate\'! Maybe they\'ve abandoned ship!');
     }
     return _alivePirates.remove(pirate.toString().hashCode);
   }

@@ -34,8 +34,12 @@ ButtonElement killButton;
 SpanElement badgeNameElement;
 SelectElement pirateList;
 
-final _client = new BrowserClient();
-final PiratesApi _api = new PiratesApi(_client);
+// By default the generated client code will use 'http://localhost:9090/'. Since
+// our server is running at port 8080 we override the default url when
+// instantiating the generated PiratesApi class.
+final String _serverUrl = 'http://localhost:8080/';
+final BrowserClient _client = new BrowserClient();
+final PiratesApi _api = new PiratesApi(_client, rootUrl: _serverUrl);
 PirateShanghaier _shanghaier;
 
 Future main() async {
@@ -72,7 +76,7 @@ Future refreshList() async {
 }
 
 void updateBadge(Event e) {
-  String inputName = (e.target as InputElement).value;
+  String inputName = (e.target as InputElement).value.trim();
   var pirate = _shanghaier.shanghaiAPirate(name: inputName);
   setBadgeName(pirate);
   if (inputName.trim().isEmpty) {
@@ -90,10 +94,14 @@ Future storeBadge(Event e) async {
   var pirateName = badgeNameElement.text;
   if (pirateName == null || pirateName.isEmpty) return;
   var pirate = new Pirate.fromString(pirateName);
-  await _api.addPirate(pirate);
-  storeButton
-    ..disabled = true
-    ..text = 'Pirate hired!';
+  try {
+    await _api.addPirate(pirate);
+    storeButton
+      ..disabled = true
+      ..text = 'Pirate hired!';
+  } catch (error) {
+    window.alert(error.message);
+  }
   refreshList();
 }
 
@@ -103,11 +111,15 @@ Future selectListener(Event e) async {
 
 Future removeBadge(Event e) async {
   var idx = pirateList.selectedIndex;
-  if (idx < 0 || idx >= pirateList.size) return;
+  if (idx < 0 || idx >= pirateList.length) return;
   var option = pirateList.options.elementAt(idx);
   var pirate = new Pirate.fromString(option.label);
-  await _api.killPirate(pirate.name, pirate.appellation);
-  killButton.disabled = true;
+  try {
+    await _api.killPirate(pirate.name, pirate.appellation);
+    killButton.disabled = true;
+  } catch (error) {
+    window.alert(error.message);
+  }
   refreshList();
 }
 
