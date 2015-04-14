@@ -130,6 +130,8 @@ void generateBadge(Event e) {
 
 void setBadgeName(Pirate pirate) {
   if (pirate == null) {
+    badgeNameElement.text = '';
+    storeButton.disabled = true;
     return;
   }
   badgeNameElement.text = pirate.toString();
