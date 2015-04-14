@@ -151,6 +151,12 @@ select option:checked {
   left: 0;
   visibility: visible;
 }
+::selection {
+  background: none;
+}
+::-moz-selection {
+    background: none;
+}
 @media all and (max-width: 600px) {
   #generateButton {
     margin-bottom: 0;
@@ -194,8 +200,8 @@ button .ripple {
   transform: translate(-50%, -50%);
 }
 button .ripple.show {
-  -webkit-animation: ripple .4s ease-in;
-  animation: ripple .4s ease-in;
+  -webkit-animation: ripple .3s ease-in;
+  animation: ripple .3s ease-in;
 }
 #storeButton .ripple,
 #killButton .ripple {
