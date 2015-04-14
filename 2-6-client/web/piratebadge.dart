@@ -81,7 +81,7 @@ void updateBadge(Event e) {
 
 Future storeBadge(Event e) async {
   var pirateName = badgeNameElement.text;
-  if (pirateName == null || pirateName.isEmpty) return;
+  if (pirateName == null || pirateName.isEmpty) return null;
   var pirate = new Pirate.fromString(pirateName);
   try {
     await _api.addPirate(pirate);
@@ -105,7 +105,7 @@ Future selectListener(Event e) async {
 
 Future removeBadge(Event e) async {
   var idx = pirateList.selectedIndex;
-  if (idx < 0 || idx >= pirateList.options.length) return;
+  if (idx < 0 || idx >= pirateList.options.length) return null;
   var option = pirateList.options.elementAt(idx);
   var pirate = new Pirate.fromString(option.label);
   try {
