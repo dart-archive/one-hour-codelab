@@ -1,22 +1,7 @@
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-// Demonstrates:
-// list, maps, random, strings, string interpolation
-// cascade, fat arrow, ternary operator
-// named constructors
-// optional parameters
-// a class
-// getters
-// httprequest, JSON
-// local storage
-// static class-level methods/fields
-// top-level variables and functions
-// typecasting with 'as'
-// futures
-// import, also with show
-// dart:core, html, math, convert and async libraries
+// Copyright (c) 2012, 2015 the Dart project authors.
+// Please see the AUTHORS file for details. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
 import 'dart:async';
 import 'dart:html';
@@ -34,9 +19,9 @@ ButtonElement killButton;
 SpanElement badgeNameElement;
 SelectElement pirateList;
 
-// By default the generated client code will use 'http://localhost:9090/'. Since
-// our server is running at port 8080 we override the default url when
-// instantiating the generated PiratesApi class.
+// By default the generated client code uses 'http://localhost:9090/'.
+// Since our server is running on port 8080 we override the default url
+// when instantiating the generated PiratesApi class.
 final String _serverUrl = 'http://localhost:8080/';
 final BrowserClient _client = new BrowserClient();
 final PiratesApi _api = new PiratesApi(_client, rootUrl: _serverUrl);
@@ -83,10 +68,14 @@ void updateBadge(Event e) {
     genButton
       ..disabled = false
       ..text = 'Aye! Gimme a name!';
+    storeButton
+      ..disabled = true;
   } else {
     genButton
       ..disabled = true
       ..text = 'Arrr! Write yer name!';
+    storeButton
+      ..disabled = false;
   }
 }
 
@@ -102,6 +91,11 @@ Future storeBadge(Event e) async {
   } catch (error) {
     window.alert(error.message);
   }
+  new Future.delayed(new Duration(milliseconds: 300), () {
+    storeButton
+      ..disabled = true
+      ..text = 'Pirate hired!';
+  });
   refreshList();
 }
 
@@ -111,7 +105,7 @@ Future selectListener(Event e) async {
 
 Future removeBadge(Event e) async {
   var idx = pirateList.selectedIndex;
-  if (idx < 0 || idx >= pirateList.length) return;
+  if (idx < 0 || idx >= pirateList.options.length) return;
   var option = pirateList.options.elementAt(idx);
   var pirate = new Pirate.fromString(option.label);
   try {
@@ -120,6 +114,9 @@ Future removeBadge(Event e) async {
   } catch (error) {
     window.alert(error.message);
   }
+  new Future.delayed(new Duration(milliseconds: 300), () {
+    killButton.disabled = true;
+  });
   refreshList();
 }
 
@@ -129,7 +126,7 @@ void generateBadge(Event e) {
 }
 
 void setBadgeName(Pirate pirate) {
-  if (pirate == null) {
+  if (pirate == null || pirate.toString().isEmpty) {
     badgeNameElement.text = '';
     storeButton.disabled = true;
     return;
