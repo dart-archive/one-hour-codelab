@@ -15,7 +15,8 @@ final String TREASURE_KEY = 'pirateName';
 
 ButtonElement genButton;
 ButtonElement storeButton;
-ButtonElement killButton;
+ButtonElement fireButton;
+ButtonElement slayButton;
 SpanElement badgeNameElement;
 SelectElement pirateList;
 
@@ -42,8 +43,10 @@ Future main() async {
   storeButton.onClick.listen(storeBadge);
   pirateList = querySelector('#pirateList');
   pirateList.onClick.listen(selectListener);
-  killButton = querySelector('#killButton');
-  killButton.onClick.listen(removeBadge);
+  fireButton = querySelector('#fireButton');
+  fireButton.onClick.listen(removeBadge);
+  slayButton = querySelector('#slayButton');
+  slayButton.onClick.listen(removeAllBadges);
   setBadgeName(getBadgeNameFromStorage());
   refreshList();
 
@@ -58,6 +61,9 @@ Future refreshList() async {
     var option = new OptionElement(data: pirate.toString());
     pirateList.add(option, 0);
   });
+  if (pirateList.length > 0) {
+    slayButton.disabled = false;
+  }
 }
 
 void updateBadge(Event e) {
@@ -100,7 +106,7 @@ Future storeBadge(Event e) async {
 }
 
 Future selectListener(Event e) async {
-  killButton.disabled = false;
+  fireButton.disabled = false;
 }
 
 Future removeBadge(Event e) async {
@@ -110,13 +116,24 @@ Future removeBadge(Event e) async {
   var pirate = new Pirate.fromString(option.label);
   try {
     await _api.killPirate(pirate.name, pirate.appellation);
-    killButton.disabled = true;
+    fireButton.disabled = true;
   } catch (error) {
     window.alert(error.message);
   }
-  new Future.delayed(new Duration(milliseconds: 300), () {
-    killButton.disabled = true;
-  });
+  refreshList();
+}
+
+Future removeAllBadges(Event e) async {
+  for (var option in pirateList.options) {
+    var pirate = new Pirate.fromString(option.label);
+    try {
+      await _api.killPirate(pirate.name, pirate.appellation);
+    } catch (error) {
+      // ignoring errors.
+    }
+  }
+  fireButton.disabled = true;
+  slayButton.disabled = true;
   refreshList();
 }
 
