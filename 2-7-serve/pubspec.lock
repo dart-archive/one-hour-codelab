@@ -37,6 +37,10 @@ packages:
     description: http_parser
     source: hosted
     version: "0.0.2+6"
+  http_server:
+    description: http_server
+    source: hosted
+    version: "0.9.5+1"
   intl:
     description: intl
     source: hosted
@@ -53,6 +57,10 @@ packages:
     description: matcher
     source: hosted
     version: "0.11.4+4"
+  mime:
+    description: mime
+    source: hosted
+    version: "0.9.3"
   path:
     description: path
     source: hosted
