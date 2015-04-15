@@ -17,7 +17,8 @@ final ApiServer _apiServer = new ApiServer(prettyPrint: true);
 
 // Create a virtual directory used to serve our client code from the 'build/web'
 // directory.
-final String _buildPath = Platform.script.resolve('../build/web/').toFilePath();
+final String _buildPath =
+    Platform.script.resolve('../build/web/').toFilePath();
 final VirtualDirectory _clientDir = new VirtualDirectory(_buildPath);
 
 main() async {
@@ -37,15 +38,17 @@ Future requestHandler(HttpRequest request) async {
     // Handle the API request.
     var apiResponse;
     try {
-      var apiRequest = new HttpApiRequest.fromHttpRequest(request, '');
+      var apiRequest =
+          new HttpApiRequest.fromHttpRequest(request, '');
       apiResponse = await _apiServer.handleHttpApiRequest(apiRequest);
     } catch (error, stack) {
       var exception = error;
       if (exception is Error) {
         exception = new Exception(exception.toString());
       }
-      apiResponse = new HttpApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR,
-          exception.toString(), exception, stack);
+      apiResponse = new HttpApiResponse.error(
+          HttpStatus.INTERNAL_SERVER_ERROR, exception.toString(),
+          exception, stack);
     }
     return sendApiResponse(apiResponse, request.response);
   } else if (request.uri.path == '/') {
@@ -56,8 +59,8 @@ Future requestHandler(HttpRequest request) async {
     // Just serve the requested file (path) from the virtual directory,
     // minus the preceeding '/'. This will fail with a 404 Not Found if the
     // request is not for a valid file.
-    var fileUri =
-        new Uri.file(_buildPath).resolve(request.uri.path.substring(1));
+    var fileUri = new Uri.file(_buildPath)
+        .resolve(request.uri.path.substring(1));
     _clientDir.serveFile(new File(fileUri.toFilePath()), request);
   }
 }

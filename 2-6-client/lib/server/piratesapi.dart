@@ -32,7 +32,8 @@ class PiratesApi {
           '$newPirate cannot be a pirate. \'Tis not a pirate name!');
     }
     if (_alivePirates.containsKey(newPirate.toString().hashCode)) {
-      throw new BadRequestError('$newPirate is already part of your crew!');
+      throw new BadRequestError(
+          '$newPirate is already part of your crew!');
     }
 
     // Add pirate to store.

@@ -74,14 +74,12 @@ void updateBadge(Event e) {
     genButton
       ..disabled = false
       ..text = 'Aye! Gimme a name!';
-    storeButton
-      ..disabled = true;
+    storeButton..disabled = true;
   } else {
     genButton
       ..disabled = true
       ..text = 'Arrr! Write yer name!';
-    storeButton
-      ..disabled = false;
+    storeButton..disabled = false;
   }
 }
 
