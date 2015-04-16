@@ -151,10 +151,10 @@ select option:checked {
   left: 0;
   visibility: visible;
 }
-::selection {
+div::selection, button::selection {
   background: none;
 }
-::-moz-selection {
+div::-moz-selection, button::-moz-selection {
     background: none;
 }
 @media all and (max-width: 600px) {
