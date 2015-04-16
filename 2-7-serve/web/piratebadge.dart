@@ -61,9 +61,15 @@ Future refreshList() async {
     var option = new OptionElement(data: pirate.toString());
     pirateList.add(option, 0);
   });
+
+  var disabled = true;
   if (pirateList.length > 0) {
-    slayButton.disabled = false;
+    disabled = false;
   }
+
+  new Future.delayed(new Duration(milliseconds: 300), () {
+    slayButton.disabled = disabled;
+  });
 }
 
 void updateBadge(Event e) {
@@ -89,9 +95,6 @@ Future storeBadge(Event e) async {
   var pirate = new Pirate.fromString(pirateName);
   try {
     await _api.addPirate(pirate);
-    storeButton
-      ..disabled = true
-      ..text = 'Pirate hired!';
   } catch (error) {
     window.alert(error.message);
   }
@@ -114,10 +117,12 @@ Future removeBadge(Event e) async {
   var pirate = new Pirate.fromString(option.label);
   try {
     await _api.killPirate(pirate.name, pirate.appellation);
-    fireButton.disabled = true;
   } catch (error) {
     window.alert(error.message);
   }
+  new Future.delayed(new Duration(milliseconds: 300), () {
+    fireButton.disabled = true;
+  });
   refreshList();
 }
 
@@ -130,8 +135,10 @@ Future removeAllBadges(Event e) async {
       // ignoring errors.
     }
   }
-  fireButton.disabled = true;
-  slayButton.disabled = true;
+  new Future.delayed(new Duration(milliseconds: 300), () {
+    fireButton.disabled = true;
+    slayButton.disabled = true;
+  });
   refreshList();
 }
 
