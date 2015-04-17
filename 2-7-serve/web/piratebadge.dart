@@ -99,7 +99,7 @@ Future storeBadge(Event e) async {
   if (pirateName == null || pirateName.isEmpty) return null;
   var pirate = new Pirate.fromString(pirateName);
   try {
-    await _api.addPirate(pirate);
+    await _api.hirePirate(pirate);
   } catch (error) {
     window.alert(error.message);
   }
@@ -121,7 +121,7 @@ Future removeBadge(Event e) async {
   var option = pirateList.options.elementAt(idx);
   var pirate = new Pirate.fromString(option.label);
   try {
-    await _api.killPirate(pirate.name, pirate.appellation);
+    await _api.firePirate(pirate.name, pirate.appellation);
   } catch (error) {
     window.alert(error.message);
   }
@@ -135,7 +135,7 @@ Future removeAllBadges(Event e) async {
   for (var option in pirateList.options) {
     var pirate = new Pirate.fromString(option.label);
     try {
-      await _api.killPirate(pirate.name, pirate.appellation);
+      await _api.firePirate(pirate.name, pirate.appellation);
     } catch (error) {
       // ignoring errors.
     }
@@ -159,7 +159,7 @@ void setBadgeName(Pirate pirate) {
     return;
   }
   badgeNameElement.text = pirate.toString();
-  window.localStorage[TREASURE_KEY] = pirate.jsonString;
+  window.localStorage[TREASURE_KEY] = pirate.toString();
   storeButton
     ..disabled = false
     ..text = 'Hire pirate!';
@@ -168,7 +168,7 @@ void setBadgeName(Pirate pirate) {
 Pirate getBadgeNameFromStorage() {
   String storedName = window.localStorage[TREASURE_KEY];
   if (storedName != null) {
-    return new Pirate.fromJSON(storedName);
+    return new Pirate.fromString(storedName);
   } else {
     return null;
   }

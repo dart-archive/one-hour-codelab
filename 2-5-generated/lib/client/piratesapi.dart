@@ -5,60 +5,21 @@ import 'dart:collection' as collection;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 
-import 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    as commons;
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:http/http.dart' as http;
 import 'package:server_code_lab/common/messages.dart';
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    show ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
+    ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client piratesApi/v1';
 
 class PiratesApi {
+
   final commons.ApiRequester _requester;
 
-  PiratesApi(http.Client client,
-      {core.String rootUrl: "http://localhost:9090/",
-      core.String servicePath: "piratesApi/v1/"})
-      : _requester = new commons.ApiRequester(
-          client, rootUrl, servicePath, USER_AGENT);
-
-  /**
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Pirate].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future<Pirate> addPirate(Pirate request) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode(PirateFactory.toJson(request));
-    }
-
-    _url = 'pirate';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => PirateFactory.fromJson(data));
-  }
+  PiratesApi(http.Client client, {core.String rootUrl: "http://localhost:9090/", core.String servicePath: "piratesApi/v1/"}) :
+      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 
   /**
    * Request parameters:
@@ -75,8 +36,7 @@ class PiratesApi {
    * If the used [http.Client] completes with an error when making a REST call,
    * this method  will complete with the same error.
    */
-  async.Future<Pirate> killPirate(
-      core.String name, core.String appellation) {
+  async.Future<Pirate> firePirate(core.String name, core.String appellation) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -88,21 +48,57 @@ class PiratesApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
     if (appellation == null) {
-      throw new core.ArgumentError(
-          "Parameter appellation is required.");
+      throw new core.ArgumentError("Parameter appellation is required.");
     }
 
-    _url = 'pirate/' +
-        commons.Escaper.ecapeVariable('$name') +
-        '/the/' +
-        commons.Escaper.ecapeVariable('$appellation');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    _url = 'pirate/' + commons.Escaper.ecapeVariable('$name') + '/the/' + commons.Escaper.ecapeVariable('$appellation');
+
+    var _response = _requester.request(_url,
+                                       "DELETE",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => PirateFactory.fromJson(data));
+  }
+
+  /**
+   * [request] - The metadata request object.
+   *
+   * Request parameters:
+   *
+   * Completes with a [Pirate].
+   *
+   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
+   * error.
+   *
+   * If the used [http.Client] completes with an error when making a REST call,
+   * this method  will complete with the same error.
+   */
+  async.Future<Pirate> hirePirate(Pirate request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode(PirateFactory.toJson(request));
+    }
+
+
+    _url = 'pirate';
+
+    var _response = _requester.request(_url,
+                                       "POST",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
     return _response.then((data) => PirateFactory.fromJson(data));
   }
 
@@ -125,16 +121,18 @@ class PiratesApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+
+
     _url = 'pirates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        data.map((value) => PirateFactory.fromJson(value)).toList());
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
+    return _response.then((data) => data.map((value) => PirateFactory.fromJson(value)).toList());
   }
 
   /**
@@ -156,14 +154,17 @@ class PiratesApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+
+
     _url = 'proper/pirates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
     return _response.then((data) => data);
   }
 
@@ -186,17 +187,23 @@ class PiratesApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+
+
     _url = 'shanghai';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url,
+                                       "GET",
+                                       body: _body,
+                                       queryParams: _queryParams,
+                                       uploadOptions: _uploadOptions,
+                                       uploadMedia: _uploadMedia,
+                                       downloadOptions: _downloadOptions);
     return _response.then((data) => PirateFactory.fromJson(data));
   }
+
 }
+
+
 
 class PirateFactory {
   static Pirate fromJson(core.Map _json) {
@@ -221,3 +228,5 @@ class PirateFactory {
     return _json;
   }
 }
+
+

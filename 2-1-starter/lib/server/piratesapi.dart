@@ -4,27 +4,17 @@
 
 library pirate.server;
 
-import 'dart:convert' show JSON;
-import 'dart:io';
 import 'package:rpc/rpc.dart';
 
 import '../common/messages.dart';
 import '../common/utils.dart';
 
 class PiratesApi {
-  final Map<int, Pirate> _alivePirates = {};
-  PirateShanghaier _shanghaier;
-  Map<String, List<String>> _properPirates;
-
-  PiratesApi() {
-    var namesFile = new File(
-        Platform.script.resolve('../lib/server/piratenames.json').toFilePath());
-    _properPirates = JSON.decode(namesFile.readAsStringSync());
-    _shanghaier = new PirateShanghaier(_properPirates);
-  }
+  final Map<int, Pirate> _pirateCrew = {};
+  final PirateShanghaier _shanghaier = new PirateShanghaier(properPirateNames);
 
   List<Pirate> listPirates() {
-    return _alivePirates.values.toList();
+    return _pirateCrew.values.toList();
   }
 
   Pirate shanghaiAPirate() {
@@ -32,7 +22,7 @@ class PiratesApi {
     if (pirate == null) {
       throw new InternalServerError('Ran out of pirates!');
     }
-    _alivePirates[pirate.toString().hashCode] = pirate;
+    _pirateCrew[pirate.toString().hashCode] = pirate;
     return pirate;
   }
 }

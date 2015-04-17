@@ -8,7 +8,35 @@ import 'dart:math' show Random;
 
 import 'messages.dart';
 
-List<String> _forbiddenAppellations = [
+// Proper pirate names and appellations.
+const Map<String, List<String>> properPirateNames = const {
+"names": const [ "Anne", "Bette", "Cate", "Dawn",
+     "Elise", "Faye", "Ginger", "Harriot",
+     "Izzy", "Jane", "Kaye", "Liz",
+     "Maria", "Nell", "Olive", "Pat",
+     "Queenie", "Rae", "Sal", "Tam",
+     "Uma", "Violet", "Wilma", "Xana",
+     "Yvonne", "Zelda",
+     "Abe", "Billy", "Caleb", "Davie",
+     "Eb", "Frank", "Gabe", "House",
+     "Icarus", "Jack", "Kurt", "Larry",
+     "Mike", "Nolan", "Oliver", "Pat",
+     "Quib", "Roy", "Sal", "Tom",
+     "Ube", "Val", "Walt", "Xavier",
+     "Yvan", "Zeb"],
+"appellations": const [ "Awesome", "Captain",
+     "Even", "Fighter", "Great", "Hearty",
+     "Jackal", "King", "Lord",
+     "Mighty", "Noble", "Old", "Powerful",
+     "Quick", "Red", "Stalwart", "Tank",
+     "Ultimate", "Vicious", "Wily", "aXe", "Young",
+     "Brave", "Eager",
+     "Kind", "Sandy",
+     "Xeric", "Yellow", "Zesty"]
+};
+
+// Clearly invalid pirate appellations.
+const List<String> _forbiddenAppellations = const [
   null,
   '',
   'sweet',

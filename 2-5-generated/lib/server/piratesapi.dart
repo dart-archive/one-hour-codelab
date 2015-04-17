@@ -4,8 +4,6 @@
 
 library pirate.server;
 
-import 'dart:convert' show JSON;
-import 'dart:io';
 import 'package:rpc/rpc.dart';
 
 import '../common/messages.dart';
@@ -13,50 +11,42 @@ import '../common/utils.dart';
 
 @ApiClass(version: 'v1')
 class PiratesApi {
-  final Map<int, Pirate> _alivePirates = {};
-  PirateShanghaier _shanghaier;
-  Map<String, List<String>> _properPirates;
-
-  PiratesApi() {
-    var namesFile = new File(
-        Platform.script.resolve('../lib/server/piratenames.json').toFilePath());
-    _properPirates = JSON.decode(namesFile.readAsStringSync());
-    _shanghaier = new PirateShanghaier(_properPirates);
-  }
+  final Map<int, Pirate> _pirateCrew = {};
+  final PirateShanghaier _shanghaier = new PirateShanghaier(properPirateNames);
 
   @ApiMethod(method: 'POST', path: 'pirate')
-  Pirate addPirate(Pirate newPirate) {
+  Pirate hirePirate(Pirate newPirate) {
     // Make sure this is a real pirate...
     if (!truePirate(newPirate)) {
       throw new BadRequestError(
           '$newPirate cannot be a pirate. \'Tis not a pirate name!');
     }
-    if (_alivePirates.containsKey(newPirate.toString().hashCode)) {
+    if (_pirateCrew.containsKey(newPirate.toString().hashCode)) {
       throw new BadRequestError(
           '$newPirate is already part of your crew!');
     }
 
     // Add pirate to store.
-    _alivePirates[newPirate.toString().hashCode] = newPirate;
+    _pirateCrew[newPirate.toString().hashCode] = newPirate;
     return newPirate;
   }
 
   @ApiMethod(
       method: 'DELETE', path: 'pirate/{name}/the/{appellation}')
-  Pirate killPirate(String name, String appellation) {
+  Pirate firePirate(String name, String appellation) {
     var pirate = new Pirate()
       ..name = Uri.decodeComponent(name)
       ..appellation = Uri.decodeComponent(appellation);
-    if (!_alivePirates.containsKey(pirate.toString().hashCode)) {
+    if (!_pirateCrew.containsKey(pirate.toString().hashCode)) {
       throw new NotFoundError(
           'Could not find pirate \'$pirate\'! Maybe they\'ve abandoned ship!');
     }
-    return _alivePirates.remove(pirate.toString().hashCode);
+    return _pirateCrew.remove(pirate.toString().hashCode);
   }
 
   @ApiMethod(method: 'GET', path: 'pirates')
   List<Pirate> listPirates() {
-    return _alivePirates.values.toList();
+    return _pirateCrew.values.toList();
   }
 
   @ApiMethod(path: 'shanghai') // Default HTTP method is GET.
@@ -65,12 +55,12 @@ class PiratesApi {
     if (pirate == null) {
       throw new InternalServerError('Ran out of pirates!');
     }
-    _alivePirates[pirate.toString().hashCode] = pirate;
+    _pirateCrew[pirate.toString().hashCode] = pirate;
     return pirate;
   }
 
   @ApiMethod(path: 'proper/pirates')
   Map<String, List<String>> properPirates() {
-    return _properPirates;
+    return properPirateNames;
   }
 }

@@ -4,8 +4,8 @@
 
 library pirate.messages;
 
-import 'dart:convert' show JSON;
-
+// This class is used to send data back and forth between the client and server.
+// It is automatically serialized and deserialized by the RPC package.
 class Pirate {
   String name;
   String appellation;
@@ -14,19 +14,11 @@ class Pirate {
   Pirate();
 
   // It is fine to have other named constructors.
-  Pirate.fromJSON(String jsonString) {
-    Map storedName = JSON.decode(jsonString);
-    name = storedName['f'];
-    appellation = storedName['a'];
-  }
-
   Pirate.fromString(String pirateName) {
     var parts = pirateName.split(' the ');
     name = parts[0];
     appellation = parts[1];
   }
-
-  String get jsonString => JSON.encode({"f": name, "a": appellation});
 
   String toString() => name.isEmpty ? '' : '$name the $appellation';
 }
