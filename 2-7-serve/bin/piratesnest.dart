@@ -56,6 +56,9 @@ Future requestHandler(HttpRequest request) async {
     // client application.
     request.response.redirect(Uri.parse('/piratebadge.html'));
   } else {
+    // Disable x-frame-options SAMEORIGIN requirement. This will allow website
+    // to load the client app into an iframe from a different origin.
+    request.response.headers.set('X-Frame-Options', 'ALLOWALL');
     // Just serve the requested file (path) from the virtual directory,
     // minus the preceeding '/'. This will fail with a 404 Not Found if the
     // request is not for a valid file.
