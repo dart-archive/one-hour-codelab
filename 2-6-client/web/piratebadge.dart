@@ -23,12 +23,17 @@ SelectElement pirateList;
 // By default the generated client code uses 'http://localhost:9090/'.
 // Since our server is running on port 8080 we override the default url
 // when instantiating the generated PiratesApi class.
-final String _serverUrl = 'http://localhost:8080/';
+final String _serverUrl = 'localhost:8080/';
 final BrowserClient _client = new BrowserClient();
-final PiratesApi _api = new PiratesApi(_client, rootUrl: _serverUrl);
+PiratesApi _api;
 PirateShanghaier _shanghaier;
 
 Future main() async {
+  // We need to determine if the client is using http or https and use the same
+  // protocol for the client stub requests (the protocol includes the ':').
+  var protocol = window.location.protocol;
+  _api = new PiratesApi(_client, rootUrl: '$protocol//$_serverUrl');
+
   var properPirates = await _api.properPirates();
   _shanghaier = new PirateShanghaier(properPirates);
 
