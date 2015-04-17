@@ -18,8 +18,8 @@ class PiratesApi {
   Map<String, List<String>> _properPirates;
 
   PiratesApi() {
-    var namesFile =
-        new File('packages/server_code_lab/server/piratenames.json');
+    var namesFile = new File(
+        Platform.script.resolve('../lib/server/piratenames.json').toFilePath());
     _properPirates = JSON.decode(namesFile.readAsStringSync());
     _shanghaier = new PirateShanghaier(_properPirates);
   }
