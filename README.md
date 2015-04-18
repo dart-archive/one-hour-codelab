@@ -1,4 +1,5 @@
 Avast, Ye Pirates: Write a Web App Code Lab
+Beware the Nest o' Pirates: Write a Server App Code Lab
 ============================
 
 [![Build Status](https://drone.io/github.com/dart-lang/one-hour-codelab/status.png)](https://drone.io/github.com/dart-lang/one-hour-codelab/latest)
@@ -13,21 +14,23 @@ Currently, drone.io tests only whether the .dart files under web/ pass static an
 Project structure
 -----------------
 
-**1-blankbadge:**
-**2-inputnamebadge:**
-**3-buttonbadge:**
-**4-classbadge:**
-**5-localbadge:**
-**6-piratebadge:**
-        Code samples used by the Avast Ye, Pirates code lab. Contains sub-directories to organize the samples by step.
+darrrt:
+  **1-blankbadge:**
+  **2-inputnamebadge:**
+  **3-buttonbadge:**
+  **4-classbadge:**
+  **5-localbadge:**
+  **6-piratebadge:**
+        Code samples used by the Avast Ye, Pirates code lab. Each numberical version corresponds to a step in the code lab.
 
-**2-1-starter**
-**2-2-simple**
-**2-4-extended**
-**2-5-generated**
-**2-6-client**
-**2-7-serve**
-        Code samples used by the Beware the Nest o' Pirates code lab. Contains sub-directories to organize the samples by step.
+server:
+  **1-starter**
+  **2-simple**
+  **4-extended**
+  **5-generated**
+  **6-client**
+  **7-serve**
+        Code samples used by the Beware the Nest o' Pirates code lab. Each numberical version corresponds to a step in the code lab.
 
 **README.md:**
         This file.
