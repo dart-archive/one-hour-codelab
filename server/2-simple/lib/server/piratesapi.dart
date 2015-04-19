@@ -9,6 +9,7 @@ import 'package:rpc/rpc.dart';
 import '../common/messages.dart';
 import '../common/utils.dart';
 
+// This class defines the interface that the server provides.
 @ApiClass(version: 'v1')
 class PiratesApi {
   final Map<int, Pirate> _pirateCrew = {};

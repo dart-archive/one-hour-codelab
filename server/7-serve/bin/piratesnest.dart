@@ -15,8 +15,8 @@ import 'package:server_code_lab/server/piratesapi.dart';
 
 final ApiServer _apiServer = new ApiServer(prettyPrint: true);
 
-// Create a virtual directory used to serve our client code from the 'build/web'
-// directory.
+// Create a virtual directory used to serve our client code from
+// the 'build/web' directory.
 final String _buildPath =
     Platform.script.resolve('../build/web/').toFilePath();
 final VirtualDirectory _clientDir = new VirtualDirectory(_buildPath);
@@ -26,7 +26,7 @@ main() async {
   Logger.root.level = Level.INFO;
   Logger.root.onRecord.listen(print);
 
-  // Setup a server serving the pirate api.
+  // Set up a server serving the pirate API.
   _apiServer.addApi(new PiratesApi());
   HttpServer server =
       await HttpServer.bind(InternetAddress.ANY_IP_V4, 8080);

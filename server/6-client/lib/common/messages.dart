@@ -4,13 +4,15 @@
 
 library pirate.messages;
 
-// This class is used to send data back and forth between the client and server.
-// It is automatically serialized and deserialized by the RPC package.
+// This class is used to send data back and forth between the
+// client and server. It is automatically serialized and
+// deserialized by the RPC package.
 class Pirate {
   String name;
   String appellation;
 
-  // A message class must have a default constructor taking no arguments.
+  // A message class must have a default constructor taking no
+  // arguments.
   Pirate();
 
   // It is fine to have other named constructors.
