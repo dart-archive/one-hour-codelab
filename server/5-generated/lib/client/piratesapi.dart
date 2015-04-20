@@ -138,39 +138,6 @@ class PiratesApi {
   /**
    * Request parameters:
    *
-   * Completes with a [core.Map<core.String, core.List<core.String>>].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method  will complete with the same error.
-   */
-  async.Future<core.Map<core.String, core.List<core.String>>> properPirates() {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-
-
-    _url = 'proper/pirates';
-
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => data);
-  }
-
-  /**
-   * Request parameters:
-   *
    * Completes with a [Pirate].
    *
    * Completes with a [commons.ApiRequestError] if the API endpoint returned an

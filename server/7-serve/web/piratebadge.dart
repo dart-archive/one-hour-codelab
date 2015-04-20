@@ -35,9 +35,7 @@ Future main() async {
   // (the protocol includes the ':').
   var protocol = window.location.protocol;
   _api = new PiratesApi(_client, rootUrl: '$protocol//$_serverUrl');
-
-  var properPirates = await _api.properPirates();
-  _shanghaier = new PirateShanghaier(properPirates);
+  _shanghaier = new PirateShanghaier(properPirateNames);
 
   InputElement inputField = querySelector('#inputName');
   inputField.onInput.listen(updateBadge);
@@ -169,7 +167,7 @@ void setBadgeName(Pirate pirate) {
 
 Pirate getBadgeNameFromStorage() {
   String storedName = window.localStorage[TREASURE_KEY];
-  if (storedName != null) {
+  if (storedName != null && storedName.contains(' the ')) {
     return new Pirate.fromString(storedName);
   } else {
     return null;
