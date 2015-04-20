@@ -61,9 +61,4 @@ class PiratesApi {
     _pirateCrew[pirate.toString().hashCode] = pirate;
     return pirate;
   }
-
-  @ApiMethod(path: 'proper/pirates')
-  Map<String, List<String>> properPirates() {
-    return properPirateNames;
-  }
 }
