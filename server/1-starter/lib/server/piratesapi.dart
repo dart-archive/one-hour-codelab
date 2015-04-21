@@ -11,9 +11,8 @@ import '../common/utils.dart';
 
 // This class defines the interface that the server provides.
 class PiratesApi {
-  final Map<int, Pirate> _pirateCrew = {};
-  final PirateShanghaier _shanghaier =
-      new PirateShanghaier(properPirateNames);
+  final Map<String, Pirate> _pirateCrew = {};
+  final PirateShanghaier _shanghaier = new PirateShanghaier();
 
   List<Pirate> listPirates() {
     return _pirateCrew.values.toList();
@@ -24,7 +23,6 @@ class PiratesApi {
     if (pirate == null) {
       throw new InternalServerError('Ran out of pirates!');
     }
-    _pirateCrew[pirate.toString().hashCode] = pirate;
     return pirate;
   }
 }
