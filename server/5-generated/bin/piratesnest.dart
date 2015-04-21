@@ -20,6 +20,7 @@ main() async {
 
   // Set up a server serving the pirate API.
   _apiServer.addApi(new PiratesApi());
-  HttpServer server = await HttpServer.bind(InternetAddress.ANY_IP_V4, 8088);
+  HttpServer server =
+      await HttpServer.bind(InternetAddress.ANY_IP_V4, 8088);
   server.listen(_apiServer.httpRequestHandler);
 }

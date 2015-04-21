@@ -33,15 +33,15 @@ class PiratesApi {
     return newPirate;
   }
 
-  @ApiMethod(method: 'DELETE', path: 'pirate/{name}/the/{appellation}')
+  @ApiMethod(
+      method: 'DELETE', path: 'pirate/{name}/the/{appellation}')
   Pirate firePirate(String name, String appellation) {
     var pirate = new Pirate()
       ..name = Uri.decodeComponent(name)
       ..appellation = Uri.decodeComponent(appellation);
     var pirateName = pirate.toString();
     if (!_pirateCrew.containsKey(pirateName)) {
-      throw new NotFoundError(
-          'Could not find pirate \'$pirate\'!' +
+      throw new NotFoundError('Could not find pirate \'$pirate\'!' +
           'Maybe they\'ve abandoned ship!');
     }
     return _pirateCrew.remove(pirateName);
