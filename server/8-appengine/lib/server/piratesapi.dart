@@ -19,7 +19,7 @@ class PiratesApi {
   // Getter to maintain a per user pirate crew.
   Map<String, Pirate> get pirateCrew {
     var userId = context.services.users.currentUser.id;
-    var crew = _pirateCrews[sessionId];
+    var crew = _pirateCrews[userId];
     if (crew == null) {
       crew = {};
       _pirateCrews[userId] = crew;
