@@ -12,9 +12,8 @@ import '../common/utils.dart';
 // This class defines the interface that the server provides.
 @ApiClass(version: 'v1')
 class PiratesApi {
-  final Map<int, Pirate> _pirateCrew = {};
-  final PirateShanghaier _shanghaier =
-      new PirateShanghaier(properPirateNames);
+  final Map<String, Pirate> _pirateCrew = {};
+  final PirateShanghaier _shanghaier = new PirateShanghaier();
 
   @ApiMethod(method: 'POST', path: 'pirate')
   Pirate hirePirate(Pirate newPirate) {
@@ -23,28 +22,29 @@ class PiratesApi {
       throw new BadRequestError(
           '$newPirate cannot be a pirate. \'Tis not a pirate name!');
     }
-    if (_pirateCrew.containsKey(newPirate.toString().hashCode)) {
+    var pirateName = newPirate.toString();
+    if (_pirateCrew.containsKey(pirateName)) {
       throw new BadRequestError(
           '$newPirate is already part of your crew!');
     }
 
     // Add pirate to store.
-    _pirateCrew[newPirate.toString().hashCode] = newPirate;
+    _pirateCrew[pirateName] = newPirate;
     return newPirate;
   }
 
-  @ApiMethod(
-      method: 'DELETE', path: 'pirate/{name}/the/{appellation}')
+  @ApiMethod(method: 'DELETE', path: 'pirate/{name}/the/{appellation}')
   Pirate firePirate(String name, String appellation) {
     var pirate = new Pirate()
       ..name = Uri.decodeComponent(name)
       ..appellation = Uri.decodeComponent(appellation);
-    if (!_pirateCrew.containsKey(pirate.toString().hashCode)) {
+    var pirateName = pirate.toString();
+    if (!_pirateCrew.containsKey(pirateName)) {
       throw new NotFoundError(
           'Could not find pirate \'$pirate\'!' +
           'Maybe they\'ve abandoned ship!');
     }
-    return _pirateCrew.remove(pirate.toString().hashCode);
+    return _pirateCrew.remove(pirateName);
   }
 
   @ApiMethod(method: 'GET', path: 'pirates')
@@ -58,7 +58,6 @@ class PiratesApi {
     if (pirate == null) {
       throw new InternalServerError('Ran out of pirates!');
     }
-    _pirateCrew[pirate.toString().hashCode] = pirate;
     return pirate;
   }
 }

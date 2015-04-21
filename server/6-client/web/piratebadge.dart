@@ -22,9 +22,9 @@ SelectElement pirateList;
 
 // By default the generated client code uses
 // 'http://localhost:9090/'. Since our server is running on
-// port 8080 we override the default url when instantiating
+// port 8088 we override the default url when instantiating
 // the generated PiratesApi class.
-final String _serverUrl = 'localhost:8080/';
+final String _serverUrl = 'localhost:8088/';
 final BrowserClient _client = new BrowserClient();
 PiratesApi _api;
 PirateShanghaier _shanghaier;
@@ -34,8 +34,12 @@ Future main() async {
   // and use the same protocol for the client stub requests
   // (the protocol includes the ':').
   var protocol = window.location.protocol;
+  if (!['http:', 'https:'].contains(protocol)) {
+    // Default to http if unknown protocol.
+    protocol = 'http:';
+  }
   _api = new PiratesApi(_client, rootUrl: '$protocol//$_serverUrl');
-  _shanghaier = new PirateShanghaier(properPirateNames);
+  _shanghaier = new PirateShanghaier();
 
   InputElement inputField = querySelector('#inputName');
   inputField.onInput.listen(updateBadge);
