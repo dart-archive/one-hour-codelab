@@ -24,7 +24,7 @@ SelectElement pirateList;
 // 'http://localhost:9090/'. Since our server is running on
 // port 8080 we override the default url when instantiating
 // the generated PiratesApi class.
-final String _serverUrl = 'pirates-nest.appspot.com/';
+final String _serverUrl = 'localhost:8080/';
 final BrowserClient _client = new BrowserClient();
 PiratesApi _api;
 PirateShanghaier _shanghaier;
