@@ -4,7 +4,7 @@
 
 library pirate.server;
 
-import 'package:rpc/rpc.dart';
+import 'package:rpc/api.dart';
 
 import '../common/messages.dart';
 import '../common/utils.dart';
