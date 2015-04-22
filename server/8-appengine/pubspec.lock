@@ -32,7 +32,7 @@ packages:
   discoveryapis_generator:
     description: discoveryapis_generator
     source: hosted
-    version: "0.7.0"
+    version: "0.7.1"
   fixnum:
     description: fixnum
     source: hosted
@@ -108,7 +108,7 @@ packages:
   rpc:
     description: rpc
     source: hosted
-    version: "0.4.0"
+    version: "0.4.1"
   source_span:
     description: source_span
     source: hosted
