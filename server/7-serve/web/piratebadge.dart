@@ -21,7 +21,7 @@ SpanElement badgeNameElement;
 SelectElement pirateList;
 
 // By default the generated client code uses
-// 'http://localhost:9090/'. Since our server is running on
+// 'http://localhost:8080/'. Since our server is running on
 // port 8088 we override the default url when instantiating
 // the generated PiratesApi class.
 final String _serverUrl = 'localhost:8088/';

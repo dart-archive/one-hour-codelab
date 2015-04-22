@@ -19,7 +19,7 @@ class PiratesApi {
   final commons.ApiRequester _requester;
 
   PiratesApi(http.Client client,
-      {core.String rootUrl: "http://localhost:9090/",
+      {core.String rootUrl: "http://localhost:8080/",
       core.String servicePath: "piratesApi/v1/"})
       : _requester = new commons.ApiRequester(
           client, rootUrl, servicePath, USER_AGENT);
