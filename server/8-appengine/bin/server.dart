@@ -41,7 +41,7 @@ Future requestHandler(HttpRequest request) async {
     var apiResponse;
     try {
       var apiRequest =
-          new HttpApiRequest.fromHttpRequest(request, '');
+          new HttpApiRequest.fromHttpRequest(request);
       apiResponse = await _apiServer.handleHttpApiRequest(apiRequest);
     } catch (error, stack) {
       var exception = error;

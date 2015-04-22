@@ -29,6 +29,18 @@ packages:
     description: discoveryapis_generator
     source: hosted
     version: "0.7.0"
+  gcloud:
+    description: gcloud
+    source: hosted
+    version: "0.2.0+1"
+  googleapis:
+    description: googleapis
+    source: hosted
+    version: "0.8.0"
+  googleapis_beta:
+    description: googleapis_beta
+    source: hosted
+    version: "0.12.0"
   http:
     description: http
     source: hosted
@@ -68,7 +80,7 @@ packages:
   rpc:
     description: rpc
     source: hosted
-    version: "0.3.0"
+    version: "0.4.0"
   source_span:
     description: source_span
     source: hosted
