@@ -34,6 +34,8 @@ main() async {
 }
 
 Future requestHandler(HttpRequest request) async {
+  _pirateLogger.info(
+      'Handling request for user: ${context.services.users.currentUser.id}');
   if (request.uri.path.startsWith('/piratesApi')) {
     // Handle the API request.
     var apiResponse;

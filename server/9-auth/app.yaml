@@ -4,6 +4,11 @@ vm: true
 api_version: 1
 threadsafe: true
 
+handlers:
+- url: /.*
+  script: server.dart
+  login: required
+
 health_check:
   enable_health_check: False
   check_interval_sec: 1

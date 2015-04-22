@@ -4,7 +4,8 @@
 
 library pirate.server;
 
-import 'package:rpc/api.dart';
+import 'package:appengine/appengine.dart';
+import 'package:rpc/rpc.dart';
 
 import '../common/messages.dart';
 import '../common/utils.dart';
@@ -12,8 +13,19 @@ import '../common/utils.dart';
 // This class defines the interface that the server provides.
 @ApiClass(version: 'v1')
 class PiratesApi {
-  final Map<String, Pirate> _pirateCrew = {};
+  final Map<String, Map<String, Pirate>> _pirateCrews = {};
   final PirateShanghaier _shanghaier = new PirateShanghaier();
+
+  // Getter to maintain a per user pirate crew.
+  Map<String, Pirate> get pirateCrew {
+    var userId = context.services.users.currentUser.id;
+    var crew = _pirateCrews[userId];
+    if (crew == null) {
+      crew = {};
+      _pirateCrews[userId] = crew;
+    }
+    return crew;
+  }
 
   @ApiMethod(method: 'POST', path: 'pirate')
   Pirate hirePirate(Pirate newPirate) {
@@ -23,13 +35,13 @@ class PiratesApi {
           '$newPirate cannot be a pirate. \'Tis not a pirate name!');
     }
     var pirateName = newPirate.toString();
-    if (_pirateCrew.containsKey(pirateName)) {
+    if (pirateCrew.containsKey(pirateName)) {
       throw new BadRequestError(
           '$newPirate is already part of your crew!');
     }
 
     // Add pirate to store.
-    _pirateCrew[pirateName] = newPirate;
+    pirateCrew[pirateName] = newPirate;
     return newPirate;
   }
 
@@ -39,17 +51,17 @@ class PiratesApi {
       ..name = Uri.decodeComponent(name)
       ..appellation = Uri.decodeComponent(appellation);
     var pirateName = pirate.toString();
-    if (!_pirateCrew.containsKey(pirateName)) {
+    if (!pirateCrew.containsKey(pirateName)) {
       throw new NotFoundError(
           'Could not find pirate \'$pirate\'!' +
           'Maybe they\'ve abandoned ship!');
     }
-    return _pirateCrew.remove(pirateName);
+    return pirateCrew.remove(pirateName);
   }
 
   @ApiMethod(method: 'GET', path: 'pirates')
   List<Pirate> listPirates() {
-    return _pirateCrew.values.toList();
+    return pirateCrew.values.toList();
   }
 
   @ApiMethod(path: 'shanghai') // Default HTTP method is GET.
