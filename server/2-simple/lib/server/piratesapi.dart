@@ -15,11 +15,19 @@ class PiratesApi {
   final Map<String, Pirate> _pirateCrew = {};
   final PirateShanghaier _shanghaier = new PirateShanghaier();
 
+  PiratesApi() {
+    var captain = new Pirate.fromString('Lars the Captain');
+    _pirateCrew[captain.toString()] = captain;
+  }
+
+  // Returns a list of the pirate crew.
   @ApiMethod(path: 'pirates')
   List<Pirate> listPirates() {
     return _pirateCrew.values.toList();
   }
 
+  // Generates (shanghais) a new pirate and return the pirate to the
+  // caller. It does not add the new pirate the crew.
   @ApiMethod(path: 'shanghai')
   Pirate shanghaiAPirate() {
     var pirate = _shanghaier.shanghaiAPirate();

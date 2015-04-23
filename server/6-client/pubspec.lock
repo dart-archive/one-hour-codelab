@@ -8,7 +8,7 @@ packages:
   analyzer:
     description: analyzer
     source: hosted
-    version: "0.24.4"
+    version: "0.24.1"
   args:
     description: args
     source: hosted
@@ -28,7 +28,7 @@ packages:
   discoveryapis_generator:
     description: discoveryapis_generator
     source: hosted
-    version: "0.7.1"
+    version: "0.7.1+1"
   gcloud:
     description: gcloud
     source: hosted
@@ -68,7 +68,7 @@ packages:
   path:
     description: path
     source: hosted
-    version: "1.3.5"
+    version: "1.3.4"
   petitparser:
     description: petitparser
     source: hosted
@@ -88,7 +88,7 @@ packages:
   stack_trace:
     description: stack_trace
     source: hosted
-    version: "1.3.1"
+    version: "1.2.4"
   string_scanner:
     description: string_scanner
     source: hosted

@@ -28,7 +28,7 @@ packages:
   discoveryapis_generator:
     description: discoveryapis_generator
     source: hosted
-    version: "0.7.1"
+    version: "0.7.1+1"
   gcloud:
     description: gcloud
     source: hosted

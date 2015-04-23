@@ -31,6 +31,7 @@ main() async {
   HttpServer server =
       await HttpServer.bind(InternetAddress.ANY_IP_V4, 8088);
   server.listen(requestHandler);
+  print('Server listening on http://${server.address.address}:${server.port}');
 }
 
 Future requestHandler(HttpRequest request) async {
