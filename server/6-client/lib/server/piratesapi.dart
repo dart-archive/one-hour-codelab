@@ -15,6 +15,11 @@ class PiratesApi {
   final Map<String, Pirate> _pirateCrew = {};
   final PirateShanghaier _shanghaier = new PirateShanghaier();
 
+  PiratesApi() {
+    var captain = new Pirate.fromString('Lars the Captain');
+    _pirateCrew[captain.toString()] = captain;
+  }
+
   @ApiMethod(method: 'POST', path: 'pirate')
   Pirate hirePirate(Pirate newPirate) {
     // Make sure this is a real pirate...
@@ -47,11 +52,14 @@ class PiratesApi {
     return _pirateCrew.remove(pirateName);
   }
 
+  // Returns a list of the pirate crew.
   @ApiMethod(method: 'GET', path: 'pirates')
   List<Pirate> listPirates() {
     return _pirateCrew.values.toList();
   }
 
+  // Generates (shanghais) a new pirate and return the pirate to the
+  // caller. It does not add the new pirate the crew.
   @ApiMethod(path: 'shanghai') // Default HTTP method is GET.
   Pirate shanghaiAPirate() {
     var pirate = _shanghaier.shanghaiAPirate();

@@ -4,8 +4,8 @@
 
 library pirate.server;
 
-import 'package:appengine/appengine.dart';
-import 'package:rpc/rpc.dart';
+import 'package:appengine/appengine.dart' as appengine;
+import 'package:rpc/api.dart';
 
 import '../common/messages.dart';
 import '../common/utils.dart';
@@ -18,15 +18,16 @@ class PiratesApi {
 
   // Getter to maintain a per user pirate crew.
   Map<String, Pirate> get pirateCrew {
-    var userId = context.services.users.currentUser.id;
+    var userId = appengine.context.services.users.currentUser.id;
     var crew = _pirateCrews[userId];
     if (crew == null) {
+      var captain = new Pirate.fromString('Lars the Captain');
       crew = {};
+      crew[captain.toString()] = captain;
       _pirateCrews[userId] = crew;
     }
     return crew;
   }
-
   @ApiMethod(method: 'POST', path: 'pirate')
   Pirate hirePirate(Pirate newPirate) {
     // Make sure this is a real pirate...
@@ -59,11 +60,14 @@ class PiratesApi {
     return pirateCrew.remove(pirateName);
   }
 
+  // Returns a list of the pirate crew.
   @ApiMethod(method: 'GET', path: 'pirates')
   List<Pirate> listPirates() {
     return pirateCrew.values.toList();
   }
 
+  // Generates (shanghais) a new pirate and return the pirate to the
+  // caller. It does not add the new pirate the crew.
   @ApiMethod(path: 'shanghai') // Default HTTP method is GET.
   Pirate shanghaiAPirate() {
     var pirate = _shanghaier.shanghaiAPirate();
