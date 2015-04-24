@@ -23,14 +23,15 @@ final VirtualDirectory _clientDir = new VirtualDirectory(_buildPath);
 
 main() async {
   // Add a bit of logging...
-  Logger.root.level = Level.INFO;
-  Logger.root.onRecord.listen(print);
+  Logger.root..level = Level.INFO
+             ..onRecord.listen(print);
 
   // Set up a server serving the pirate API.
   _apiServer.addApi(new PiratesApi());
   HttpServer server = await HttpServer.bind(InternetAddress.ANY_IP_V4, 8088);
   server.listen(requestHandler);
-  print('Server listening on http://${server.address.address}:${server.port}');
+  print('Server listening on http://${server.address.host}:'
+        '${server.port}');
 }
 
 Future requestHandler(HttpRequest request) async {
@@ -38,14 +39,12 @@ Future requestHandler(HttpRequest request) async {
     // Handle the API request.
     var apiResponse;
     try {
-      var apiRequest =
-          new HttpApiRequest.fromHttpRequest(request);
-      apiResponse = await _apiServer.handleHttpApiRequest(apiRequest);
+      var apiRequest = new HttpApiRequest.fromHttpRequest(request);
+      apiResponse =
+          await _apiServer.handleHttpApiRequest(apiRequest);
     } catch (error, stack) {
-      var exception = error;
-      if (exception is Error) {
-        exception = new Exception(exception.toString());
-      }
+      var exception =
+          error is Error ? new Exception(error.toString()) : error;
       apiResponse = new HttpApiResponse.error(
           HttpStatus.INTERNAL_SERVER_ERROR, exception.toString(),
           exception, stack);
@@ -56,11 +55,7 @@ Future requestHandler(HttpRequest request) async {
     // loading the client application.
     request.response.redirect(Uri.parse('/piratebadge.html'));
   } else {
-    // Disable x-frame-options SAMEORIGIN requirement. This allows
-    // the website to load the client app into an iframe from a
-    // different origin.
-    request.response.headers.set('X-Frame-Options', 'ALLOWALL');
-    // Just serve the requested file (path) from the virtual directory,
+    // Serve the requested file (path) from the virtual directory,
     // minus the preceeding '/'. This will fail with a 404 Not Found
     // if the request is not for a valid file.
     var fileUri = new Uri.file(_buildPath)
