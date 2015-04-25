@@ -24,8 +24,8 @@ class PiratesApi {
     return _pirateCrew.values.toList();
   }
 
-  // Generates (shanghais) a new pirate and return the pirate to the
-  // caller. It does not add the new pirate the crew.
+  // Generates (shanghais) and returns a new pirate.
+  // Does not add the new pirate to the crew.
   Pirate shanghaiAPirate() {
     var pirate = _shanghaier.shanghaiAPirate();
     if (pirate == null) {

@@ -33,7 +33,7 @@ class PiratesApi {
           '$newPirate is already part of your crew!');
     }
 
-    // Add pirate to store.
+    // Add the pirate to the crew.
     _pirateCrew[pirateName] = newPirate;
     return newPirate;
   }
@@ -46,7 +46,7 @@ class PiratesApi {
       ..appellation = Uri.decodeComponent(appellation);
     var pirateName = pirate.toString();
     if (!_pirateCrew.containsKey(pirateName)) {
-      throw new NotFoundError('Could not find pirate \'$pirate\'!' +
+      throw new NotFoundError('Could not find pirate \'$pirate\'! ' +
           'Maybe they\'ve abandoned ship!');
     }
     return _pirateCrew.remove(pirateName);
@@ -58,8 +58,8 @@ class PiratesApi {
     return _pirateCrew.values.toList();
   }
 
-  // Generates (shanghais) a new pirate and return the pirate to the
-  // caller. It does not add the new pirate the crew.
+  // Generates (shanghais) and returns a new pirate.
+  // Does not add the new pirate to the crew.
   @ApiMethod(path: 'shanghai') // Default HTTP method is GET.
   Pirate shanghaiAPirate() {
     var pirate = _shanghaier.shanghaiAPirate();
