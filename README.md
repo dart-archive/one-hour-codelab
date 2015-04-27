@@ -1,5 +1,4 @@
-Avast, Ye Pirates: Write a Web App Code Lab
-Beware the Nest o' Pirates: Write a Server App Code Lab
+Dart Code Lab Samples
 ============================
 
 [![Build Status](https://drone.io/github.com/dart-lang/one-hour-codelab/status.png)](https://drone.io/github.com/dart-lang/one-hour-codelab/latest)
