@@ -4,7 +4,7 @@
 
 import 'dart:html';
 
-void  main() {
+void main() {
   querySelector('#inputName').onInput.listen(updateBadge);
 }
 

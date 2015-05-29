@@ -4,30 +4,27 @@
 
 import 'dart:html';
 import 'dart:math' show Random;
-import 'dart:convert' show JSON;
-
-final String TREASURE_KEY = 'pirateName';
 
 ButtonElement genButton;
 
-void  main() {
+void main() {
   querySelector('#inputName').onInput.listen(updateBadge);
   genButton = querySelector('#generateButton');
   genButton.onClick.listen(generateBadge);
-  
-  setBadgeName(getBadgeNameFromStorage());
 }
 
 void updateBadge(Event e) {
   String inputName = (e.target as InputElement).value;
-  
+
   setBadgeName(new PirateName(firstName: inputName));
   if (inputName.trim().isEmpty) {
-    genButton..disabled = false
-             ..text = 'Aye! Gimme a name!';
+    genButton
+      ..disabled = false
+      ..text = 'Aye! Gimme a name!';
   } else {
-    genButton..disabled = true
-             ..text = 'Arrr! Write yer name!';
+    genButton
+      ..disabled = true
+      ..text = 'Arrr! Write yer name!';
   }
 }
 
@@ -36,24 +33,10 @@ void generateBadge(Event e) {
 }
 
 void setBadgeName(PirateName newName) {
-  if (newName == null) {
-    return;
-  }
   querySelector('#badgeName').text = newName.pirateName;
-  window.localStorage[TREASURE_KEY] = newName.jsonString;
-}
-
-PirateName getBadgeNameFromStorage() {
-  String storedName = window.localStorage[TREASURE_KEY];
-  if (storedName != null) {
-    return new PirateName.fromJSON(storedName);
-  } else {
-    return null;
-  }
 }
 
 class PirateName {
-  
   static final Random indexGen = new Random();
 
   String _firstName;
@@ -66,28 +49,24 @@ class PirateName {
       _firstName = firstName;
     }
     if (appellation == null) {
-      _appellation = appellations[indexGen.nextInt(appellations.length)];
+      _appellation =
+          appellations[indexGen.nextInt(appellations.length)];
     } else {
       _appellation = appellation;
     }
   }
 
-  PirateName.fromJSON(String jsonString) {
-    Map storedName = JSON.decode(jsonString);
-    _firstName = storedName['f'];
-    _appellation = storedName['a'];
-  }
-
   String toString() => pirateName;
 
-  String get jsonString => '{ "f": "$_firstName", "a": "$_appellation" } ';
-
-  String get pirateName => _firstName.isEmpty ? '' : '$_firstName the $_appellation';
+  String get pirateName =>
+      _firstName.isEmpty ? '' : '$_firstName the $_appellation';
 
   static final List names = [
-    'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
-    'Bill', 'Ragnar', 'Ed', 'John', 'Jane' ];
+    'Anne', 'Mary', 'Jack', 'Morgan', 'Roger', 'Bill', 'Ragnar',
+    'Ed', 'John', 'Jane'
+  ];
   static final List appellations = [
-    'Jackal', 'King', 'Red', 'Stalwart', 'Axe',
-    'Young', 'Brave', 'Eager', 'Wily', 'Zesty'];
+    'Jackal', 'King', 'Red', 'Stalwart', 'Axe', 'Young', 'Brave',
+    'Eager', 'Wily', 'Zesty'
+  ];
 }

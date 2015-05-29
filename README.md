@@ -14,18 +14,18 @@ Project structure
 -----------------
 
 #### `darrrt/`
-Code samples used by the Avast Ye, Pirates code lab. Each numberical version corresponds to a step in the code lab.
+Code samples used by the Avast Ye, Pirates code lab. Each numerical version corresponds to a step in the code lab. 
 ```
 1-blankbadge/
 2-inputnamebadge/
 3-buttonbadge/
 4-classbadge/
-5-localbadge/
-6-piratebadge/
+final-DartPad-only/
+final/
 ```
 
 #### `server/`
-Code samples used by the Beware the Nest o' Pirates code lab. Each numberical version corresponds to a step in the code lab.
+Code samples used by the Beware the Nest o' Pirates code lab. Each numerical version corresponds to a step in the code lab.
 ```
 1-starter/
 2-simple/
