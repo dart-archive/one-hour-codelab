@@ -20,8 +20,8 @@ Code samples used by the Avast Ye, Pirates code lab. Each numerical version corr
 2-inputnamebadge/
 3-buttonbadge/
 4-classbadge/
-final-DartPad-only/
-final/
+5-final/
+piratebadge/
 ```
 
 #### `server/`
