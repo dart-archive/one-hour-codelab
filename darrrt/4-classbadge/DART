@@ -62,11 +62,9 @@ class PirateName {
       _firstName.isEmpty ? '' : '$_firstName the $_appellation';
 
   static final List names = [
-    'Anne', 'Mary', 'Jack', 'Morgan', 'Roger', 'Bill', 'Ragnar',
-    'Ed', 'John', 'Jane'
-  ];
+    'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
+    'Bill', 'Ragnar', 'Ed', 'John', 'Jane' ];
   static final List appellations = [
-    'Jackal', 'King', 'Red', 'Stalwart', 'Axe', 'Young', 'Brave',
-    'Eager', 'Wily', 'Zesty'
-  ];
+    'Jackal', 'King', 'Red', 'Stalwart', 'Axe',
+    'Young', 'Brave', 'Eager', 'Wily', 'Zesty'];
 }

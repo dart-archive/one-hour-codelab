@@ -9,7 +9,6 @@
 // optional parameters
 // a class
 // getters
-// local storage
 // static class-level methods/fields
 // top-level variables and functions
 // typecasting with 'as'
@@ -19,6 +18,7 @@
 import 'dart:html';
 import 'dart:math' show Random;
 import 'dart:convert' show JSON;
+import 'dart:async' show Future;
 
 ButtonElement genButton;
 SpanElement badgeNameElement;
@@ -33,9 +33,9 @@ main() async {
 
   try {
     await PirateName.readyThePirates();
+    // on success
     inputField.disabled = false; //enable
-    genButton.disabled = false;  //enable
-    setBadgeName(getBadgeNameFromStorage());
+    genButton.disabled = false; //enable
   } catch (arrr) {
     print('Error initializing pirate names: $arrr');
     badgeNameElement.text = 'Arrr! No names.';
@@ -67,15 +67,6 @@ void setBadgeName(PirateName newName) {
   badgeNameElement.text = newName.pirateName;
 }
 
-PirateName getBadgeNameFromStorage() {
-  String storedName = null;
-  if (storedName != null) {
-    return new PirateName.fromJSON(storedName);
-  } else {
-    return null;
-  }
-}
-
 class PirateName {
   static final Random indexGen = new Random();
 
@@ -99,53 +90,21 @@ class PirateName {
     }
   }
 
-  PirateName.fromJSON(String jsonString) {
-    Map storedName = JSON.decode(jsonString);
-    _firstName = storedName['f'];
-    _appellation = storedName['a'];
-  }
-
   String toString() => pirateName;
-
-  String get jsonString =>
-      JSON.encode({"f": _firstName, "a": _appellation});
 
   String get pirateName =>
       _firstName.isEmpty ? '' : '$_firstName the $_appellation';
 
-  static readyThePirates() async {
-    _parsePirateNamesFromJSON(_pirateNamesJson); //jsonString);
+  static Future readyThePirates() async {
+    String path =
+        'https://www.dartlang.org/codelabs/darrrt/files/piratenames.json';
+    String jsonString = await HttpRequest.getString(path);
+    _parsePirateNamesFromJSON(jsonString);
   }
 
-  static _parsePirateNamesFromJSON(String jsonString) {
+  static void _parsePirateNamesFromJSON(String jsonString) {
     Map pirateNames = JSON.decode(jsonString);
     names = pirateNames['names'];
     appellations = pirateNames['appellations'];
   }
 }
-
-final String _pirateNamesJson = '''
-{ "names": [ "Anne", "Bette", "Cate", "Dawn",
-        "Elise", "Faye", "Ginger", "Harriot",
-        "Izzy", "Jane", "Kaye", "Liz",
-        "Maria", "Nell", "Olive", "Pat",
-        "Queenie", "Rae", "Sal", "Tam",
-        "Uma", "Violet", "Wilma", "Xana",
-        "Yvonne", "Zelda",
-        "Abe", "Billy", "Caleb", "Davie",
-        "Eb", "Frank", "Gabe", "House",
-        "Icarus", "Jack", "Kurt", "Larry",
-        "Mike", "Nolan", "Oliver", "Pat",
-        "Quib", "Roy", "Sal", "Tom",
-        "Ube", "Val", "Walt", "Xavier",
-        "Yvan", "Zeb"],
-  "appellations": [ "Awesome", "Captain",
-        "Even", "Fighter", "Great", "Hearty",
-        "Jackal", "King", "Lord",
-        "Mighty", "Noble", "Old", "Powerful",
-        "Quick", "Red", "Stalwart", "Tank",
-        "Ultimate", "Vicious", "Wily", "aXe", "Young",
-        "Brave", "Eager",
-        "Kind", "Sandy",
-        "Xeric", "Yellow", "Zesty"]}
-''';
