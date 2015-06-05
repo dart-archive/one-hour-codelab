@@ -15,6 +15,9 @@
 // import, also with show
 // dart:core, html, math, convert and async libraries
 
+// In Step 5 of the code lab (dartlang.org/codelabs/darrrt/),
+// you read the pirate names from a JSON file.
+
 import 'dart:html';
 import 'dart:math' show Random;
 import 'dart:convert' show JSON;

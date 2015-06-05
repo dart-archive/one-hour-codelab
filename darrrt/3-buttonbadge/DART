@@ -2,6 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// In Step 3 of the code lab (dartlang.org/codelabs/darrrt/),
+// you add a button to the app.
+
 import 'dart:html';
 
 ButtonElement genButton;
