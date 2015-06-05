@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // In Step 3 of the code lab (dartlang.org/codelabs/darrrt/),
-// you add a button to the app.
+// you added a button to the app.
 
 import 'dart:html';
 

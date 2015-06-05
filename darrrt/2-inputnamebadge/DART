@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // In Step 2 of the code lab (dartlang.org/codelabs/darrrt/),
-// you add an input field to the app.
+// you added an input field to the app.
 
 import 'dart:html';
 

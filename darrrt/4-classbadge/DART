@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // In Step 4 of the code lab (dartlang.org/codelabs/darrrt/),
-// you create a PirateName class.
+// you created a PirateName class.
 
 import 'dart:html';
 import 'dart:math' show Random;
