@@ -3,9 +3,9 @@ Dart Code Lab Samples
 
 [![Build Status](https://drone.io/github.com/dart-lang/one-hour-codelab/status.png)](https://drone.io/github.com/dart-lang/one-hour-codelab/latest)
 
-These are small Dart samples used by two codelabs: the [Avast Ye, Pirates][client-codelab], in which you learn to build and web app, and which takes about an hour to complete, and the [Beware the Nest o' Pirates][server-codelab] which shows you how to write a RESTful Dart server.
+These are small Dart samples used by two codelabs: [Avast Ye, Pirates][client-codelab], in which you learn to build and web app, and which takes about an hour to complete, and [Beware the Nest o' Pirates][server-codelab] which shows you how to write a RESTful Dart server.
 
-Repo and testing
+Repository and testing
 ----------------
 
 Currently, drone.io tests only whether the .dart files under web/ pass static analysis (dartanalyzer). We could do real unit testing, and we could do better with HTML samples.
