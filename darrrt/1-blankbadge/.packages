@@ -1,6 +1,0 @@
-# Generate by pub on 2015-08-07 09:36:52.783.
-# This file contains a map from Dart package names to Dart package locations.
-# Dart tools, including the Dart VM and Dart analyzer, rely on the content.
-# AUTO GENERATED - DO NOT EDIT
-browser:file:///Users/shaza/.pub-cache/hosted/pub.dartlang.org/browser-0.10.0+2/lib/
-pirate_codelab:lib/
