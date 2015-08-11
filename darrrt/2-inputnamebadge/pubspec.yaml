@@ -1,0 +1,8 @@
+name: avast_ye_pirates
+description: Write a Dart web app code lab
+dependencies:
+  browser: ^0.10.0+2
+
+homepage: https://www.dartlang.org/codelabs/darrrt/
+gist: https://gist.github.com/Sfshaza/e78a858a1b8cfce15bbf
+dartpad: https://dartpad.dartlang.org/e78a858a1b8cfce15bbf
