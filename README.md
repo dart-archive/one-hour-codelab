@@ -3,7 +3,10 @@ Dart Code Lab Samples
 
 [![Build Status](https://drone.io/github.com/dart-lang/one-hour-codelab/status.png)](https://drone.io/github.com/dart-lang/one-hour-codelab/latest)
 
-These are small Dart samples used by two codelabs: [Avast Ye, Pirates][client-codelab], in which you learn to build and web app, and which takes about an hour to complete, and [Beware the Nest o' Pirates][server-codelab] which shows you how to write a RESTful Dart server.
+These are small Dart samples used by two codelabs:
+
+* [Avast Ye, Pirates][client-codelab], where you learn to build a web app. This lab should take about an hour to complete.
+* [Beware the Nest o' Pirates][server-codelab] which shows you how to write a RESTful Dart server.
 
 Repository and testing
 ----------------
