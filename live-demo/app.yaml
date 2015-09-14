@@ -1,0 +1,13 @@
+version: 1
+runtime: custom
+vm: true
+api_version: 1
+threadsafe: true
+
+health_check:
+  enable_health_check: False
+  check_interval_sec: 1
+  timeout_sec: 1
+
+manual_scaling:
+  instances: 1
