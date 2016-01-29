@@ -29,11 +29,12 @@ Code samples used by the Avast Ye, Pirates code lab. Each numerical version corr
 #### `ng2/`
 Code samples used by the angular2 version of the Avast Ye, Pirates code lab. Each numerical version corresponds to a step in the code lab.
 ```
-1-blankbadge/
-2-inputnamebadge/
-3-buttonbadge/
-4-readjsonfile/
-5-final/
+1-skeleton/
+2-blankbadge/
+3-inputnamebadge/
+4-buttonbadge/
+5-piratenameservice/
+6-readjsonfile/
 ```
 
 #### `server/`
