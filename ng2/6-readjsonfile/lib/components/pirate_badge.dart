@@ -2,27 +2,40 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:async';
 import 'package:angular2/angular2.dart';
-import '../services/pirate_name.dart' show PirateNameService;
+import '../services/pirate_name.dart' show PirateName;
 
 @Component(
     selector: 'pirate-badge',
-    templateUrl: 'pirate_badge_component.html')
-class PirateBadge {
+    templateUrl: 'pirate_badge.html')
+class PirateBadge implements OnInit {
   String badgeName = "";
   String buttonText = "Aye! Gimme a name!";
-  bool enableButton = true;
-  bool enableInput = true;
+  bool enableButton = false;
+  bool enableInput = false;
 
-  void generateBadge() => setBadgeName(new PirateNameService());
+  ngOnInit() async {
+    try {
+      await PirateName.readyThePirates();
+      //on success
+      enableButton = true;
+      enableInput = true;
+    } catch (arrr) {
+      badgeName = 'Arrr! No names.';
+      print('Error initializing pirate names: $arrr');
+    }
+  }
 
-  void setBadgeName(PirateNameService newName) {
+  generateBadge() => setBadgeName(new PirateName());
+
+  void setBadgeName(PirateName newName) {
     if (newName == null) return;
     badgeName = newName.pirateName;
   }
 
   void updateBadge(String inputName) {
-    setBadgeName(new PirateNameService(firstName: inputName));
+    setBadgeName(new PirateName(firstName: inputName));
     if (inputName.trim().isEmpty) {
       buttonText = 'Aye! Gimme a name!';
       enableButton = true;

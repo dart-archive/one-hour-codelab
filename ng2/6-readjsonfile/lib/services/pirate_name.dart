@@ -7,7 +7,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math' show Random;
 
-class PirateNameService {
+class PirateName {
   static final Random indexGen = new Random();
 
   final String _firstName;
@@ -16,7 +16,7 @@ class PirateNameService {
   static final List<String> _names = [];
   static final List<String> _appellations = [];
 
-  PirateNameService({String firstName, String appellation})
+  PirateName({String firstName, String appellation})
       : _firstName =
             firstName ?? _names[indexGen.nextInt(_names.length)],
         _appellation = appellation ??
@@ -35,8 +35,8 @@ class PirateNameService {
         'piratenames.json';
     final jsonString = await HttpRequest.getString(path);
     final pirateNames = JSON.decode(jsonString);
-    PirateNameService._names.addAll(pirateNames['names']);
-    PirateNameService._appellations
+    PirateName._names.addAll(pirateNames['names']);
+    PirateName._appellations
         .addAll(pirateNames['appellations']);
   }
 }

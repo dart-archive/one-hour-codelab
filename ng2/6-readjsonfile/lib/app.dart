@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular2/angular2.dart' show Component;
-import 'components/pirate_badge_component.dart';
+import 'components/pirate_badge.dart';
 
 @Component(
     selector: 'my-app',
