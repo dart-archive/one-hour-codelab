@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular2/angular2.dart';
-import '../services/pirate_name.dart' show PirateNameService;
+import '../services/pirate_name.dart' show PirateName;
 
 @Component(
     selector: 'pirate-badge',
@@ -14,15 +14,15 @@ class PirateBadge {
   bool enableButton = true;
   bool enableInput = true;
 
-  void generateBadge() => setBadgeName(new PirateNameService());
+  void generateBadge() => setBadgeName(new PirateName());
 
-  void setBadgeName(PirateNameService newName) {
+  void setBadgeName(PirateName newName) {
     if (newName == null) return;
     badgeName = newName.pirateName;
   }
 
   void updateBadge(String inputName) {
-    setBadgeName(new PirateNameService(firstName: inputName));
+    setBadgeName(new PirateName(firstName: inputName));
     if (inputName.trim().isEmpty) {
       buttonText = 'Aye! Gimme a name!';
       enableButton = true;
