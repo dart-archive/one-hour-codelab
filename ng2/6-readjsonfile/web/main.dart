@@ -3,8 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular2/bootstrap.dart';
-import 'package:pirate_badge/app.dart';
+import 'package:pirate_badge/app_component.dart';
 
 main() {
-  bootstrap(App);
+  bootstrap(AppComponent);
 }

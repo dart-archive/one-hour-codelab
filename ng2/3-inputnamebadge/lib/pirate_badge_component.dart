@@ -4,13 +4,11 @@
 
 import 'package:angular2/angular2.dart';
 
-@Component(
-    selector: 'pirate-badge',
-    templateUrl: 'pirate_badge.html')
-class PirateBadge {
-  String badgeName = "";
+@Component(selector: 'pirate-badge', templateUrl: 'pirate_badge_component.html')
+class PirateBadgeComponent {
+  String badgeName = '';
 
   void updateBadge(String inputName) {
-    badgeName = inputName.toString();
+    badgeName = inputName;
   }
 }

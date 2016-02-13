@@ -7,8 +7,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math' show Random;
 
-class PirateName {
-  static final Random rng = new Random();
+class PirateNameService {
+  static final Random _indexGen = new Random();
 
   final String _firstName;
   final String _appellation;
@@ -17,14 +17,27 @@ class PirateName {
   static final List<String> _appellations = [];
 
   static String randomFirstName() {
-    return(_names[rng.nextInt(_names.length)]);
+    return _names[_indexGen.nextInt(_names.length)];
   }
 
   static String randomAppellation() {
-    return(_appellations[rng.nextInt(_appellations.length)]);
+    return _appellations[_indexGen.nextInt(_appellations.length)];
   }
 
-  PirateName({String firstName, String appellation})
+  static Future readyThePirates() async {
+    if (_names.isNotEmpty && _appellations.isNotEmpty)
+      return;
+
+    final path = 'https://www.dartlang.org/codelabs/darrrt/files/'
+        'piratenames.json';
+    final jsonString = await HttpRequest.getString(path);
+    final pirateNames = JSON.decode(jsonString);
+    PirateNameService._names.addAll(pirateNames['names']);
+    PirateNameService._appellations
+        .addAll(pirateNames['appellations']);
+  }
+
+  PirateNameService({String firstName, String appellation})
       : _firstName   = firstName   ?? randomFirstName(),
         _appellation = appellation ?? randomAppellation();
 
@@ -32,17 +45,4 @@ class PirateName {
       _firstName.isEmpty ? '' : '$_firstName the $_appellation';
 
   String toString() => pirateName;
-
-  static Future readyThePirates() async {
-    if (_names.isNotEmpty && _appellations.isNotEmpty) {
-      return;
-    }
-    final path = 'https://www.dartlang.org/codelabs/darrrt/files/'
-        'piratenames.json';
-    final jsonString = await HttpRequest.getString(path);
-    final pirateNames = JSON.decode(jsonString);
-    PirateName._names.addAll(pirateNames['names']);
-    PirateName._appellations
-        .addAll(pirateNames['appellations']);
-  }
 }

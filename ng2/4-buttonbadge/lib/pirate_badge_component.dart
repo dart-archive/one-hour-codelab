@@ -4,12 +4,10 @@
 
 import 'package:angular2/angular2.dart';
 
-@Component(
-    selector: 'pirate-badge',
-    templateUrl: 'pirate_badge.html')
-class PirateBadge {
-  String badgeName = "";
-  String buttonText = "Aye! Gimme a name!";
+@Component(selector: 'pirate-badge', templateUrl: 'pirate_badge_component.html')
+class PirateBadgeComponent {
+  String badgeName = '';
+  String buttonText = 'Aye! Gimme a name!';
   bool enableButton = true;
   bool enableInput = true;
 
@@ -18,7 +16,7 @@ class PirateBadge {
   }
 
   void updateBadge(String inputName) {
-    badgeName = inputName.toString();
+    badgeName = inputName;
     if (inputName.trim().isEmpty) {
       buttonText = 'Aye! Gimme a name!';
       enableButton = true;

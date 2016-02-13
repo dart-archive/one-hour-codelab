@@ -3,13 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular2/angular2.dart';
-import 'components/pirate_badge.dart';
 
-@Component(
-    selector: 'my-app',
-    template: '''
-    <h1>Pirate badge</h1>
-    <pirate-badge></pirate-badge>
-    ''',
-    directives: const [PirateBadge])
-class App {}
+@Component(selector: 'pirate-badge', templateUrl: 'pirate_badge_component.html')
+class PirateBadgeComponent {
+  String badgeName = 'Shams';
+}

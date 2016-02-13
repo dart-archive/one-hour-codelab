@@ -4,8 +4,8 @@
 
 import 'dart:math' show Random;
 
-class PirateName {
-  static final Random rng = new Random();
+class PirateNameService {
+  static final Random _indexGen = new Random();
 
   final String _firstName;
   final String _appellation;
@@ -18,14 +18,14 @@ class PirateName {
     'Young', 'Brave', 'Eager', 'Wily', 'Zesty'];
 
   static String randomFirstName() {
-    return(_names[rng.nextInt(_names.length)]);
+    return(_names[_indexGen.nextInt(_names.length)]);
   }
 
   static String randomAppellation() {
-    return(_appellations[rng.nextInt(_appellations.length)]);
+    return(_appellations[_indexGen.nextInt(_appellations.length)]);
   }
 
-  PirateName({String firstName, String appellation})
+  PirateNameService({String firstName, String appellation})
       : _firstName   = firstName   ?? randomFirstName(),
         _appellation = appellation ?? randomAppellation();
 
