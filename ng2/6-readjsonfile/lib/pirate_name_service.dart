@@ -25,20 +25,19 @@ class PirateNameService {
   }
 
   static Future readyThePirates() async {
-    if (_names.isNotEmpty && _appellations.isNotEmpty)
-      return;
+    if (_names.isNotEmpty && _appellations.isNotEmpty) return;
 
-    final path = 'https://www.dartlang.org/codelabs/darrrt/files/'
-        'piratenames.json';
+    final path =
+        'https://www.dartlang.org/codelabs/darrrt/files/piratenames.json';
+
     final jsonString = await HttpRequest.getString(path);
     final pirateNames = JSON.decode(jsonString);
     PirateNameService._names.addAll(pirateNames['names']);
-    PirateNameService._appellations
-        .addAll(pirateNames['appellations']);
+    PirateNameService._appellations.addAll(pirateNames['appellations']);
   }
 
   PirateNameService({String firstName, String appellation})
-      : _firstName   = firstName   ?? randomFirstName(),
+      : _firstName = firstName ?? randomFirstName(),
         _appellation = appellation ?? randomAppellation();
 
   String get pirateName =>

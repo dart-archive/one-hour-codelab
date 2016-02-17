@@ -18,15 +18,15 @@ class PirateNameService {
     'Young', 'Brave', 'Eager', 'Wily', 'Zesty'];
 
   static String randomFirstName() {
-    return(_names[_indexGen.nextInt(_names.length)]);
+    return (_names[_indexGen.nextInt(_names.length)]);
   }
 
   static String randomAppellation() {
-    return(_appellations[_indexGen.nextInt(_appellations.length)]);
+    return (_appellations[_indexGen.nextInt(_appellations.length)]);
   }
 
   PirateNameService({String firstName, String appellation})
-      : _firstName   = firstName   ?? randomFirstName(),
+      : _firstName = firstName ?? randomFirstName(),
         _appellation = appellation ?? randomAppellation();
 
   String get pirateName =>
