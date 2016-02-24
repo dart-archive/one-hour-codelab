@@ -7,9 +7,6 @@ import 'package:pirate_badge/pirate_badge_component.dart';
 
 @Component(
     selector: 'my-app',
-    template: '''
-    <h1>Pirate badge</h1>
-    <pirate-badge></pirate-badge>
-    ''',
+    templateUrl: 'app_component.html',
     directives: const [PirateBadgeComponent])
 class AppComponent {}
