@@ -6,7 +6,7 @@ import 'package:angular2/angular2.dart';
 
 @Component(selector: 'pirate-badge', templateUrl: 'pirate_badge_component.html')
 class PirateBadgeComponent {
-  String badgeName = '';
+  String badgeName = 'Shams';
 
   void updateBadge(String inputName) {
     badgeName = inputName;

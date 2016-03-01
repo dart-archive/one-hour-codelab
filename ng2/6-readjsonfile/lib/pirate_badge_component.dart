@@ -7,7 +7,7 @@ import 'pirate_name_service.dart';
 
 @Component(selector: 'pirate-badge', templateUrl: 'pirate_badge_component.html')
 class PirateBadgeComponent implements OnInit {
-  String badgeName = '';
+  String badgeName = 'Shams';
   String buttonText = 'Aye! Gimme a name!';
   bool enableButton = false;
   bool enableInput = false;

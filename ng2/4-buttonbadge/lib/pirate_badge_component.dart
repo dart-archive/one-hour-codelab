@@ -6,7 +6,7 @@ import 'package:angular2/angular2.dart';
 
 @Component(selector: 'pirate-badge', templateUrl: 'pirate_badge_component.html')
 class PirateBadgeComponent {
-  String badgeName = '';
+  String badgeName = 'Shams';
   String buttonText = 'Aye! Gimme a name!';
   bool enableButton = true;
   bool enableInput = true;
