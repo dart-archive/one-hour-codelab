@@ -11,7 +11,6 @@ import 'pirate_name_service.dart';
     providers: const [PirateNameService])
 class PirateBadgeComponent implements OnInit {
   final PirateNameService _nameService;
-
   String badgeName = '';
   String buttonText = 'Aye! Gimme a name!';
   bool enableButton = false;
