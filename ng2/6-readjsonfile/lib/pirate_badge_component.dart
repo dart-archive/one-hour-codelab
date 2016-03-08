@@ -5,16 +5,23 @@
 import 'package:angular2/angular2.dart';
 import 'pirate_name_service.dart';
 
-@Component(selector: 'pirate-badge', templateUrl: 'pirate_badge_component.html')
+@Component(
+    selector: 'pirate-badge',
+    templateUrl: 'pirate_badge_component.html',
+    providers: const [PirateNameService])
 class PirateBadgeComponent implements OnInit {
+  final PirateNameService _nameService;
+
   String badgeName = '';
   String buttonText = 'Aye! Gimme a name!';
   bool enableButton = false;
   bool enableInput = false;
 
+  PirateBadgeComponent(this._nameService);
+
   ngOnInit() async {
     try {
-      await PirateNameService.readyThePirates();
+      await _nameService.readyThePirates();
       //on success
       enableButton = true;
       enableInput = true;
@@ -25,16 +32,16 @@ class PirateBadgeComponent implements OnInit {
   }
 
   void generateBadge() {
-    setBadgeName(new PirateNameService());
+    setBadgeName();
   }
 
-  void setBadgeName(PirateNameService newName) {
+  void setBadgeName([String newName = '']) {
     if (newName == null) return;
-    badgeName = newName.pirateName;
+    badgeName = _nameService.getPirateName(newName);
   }
 
   void updateBadge(String inputName) {
-    setBadgeName(new PirateNameService(firstName: inputName));
+    setBadgeName(inputName);
     if (inputName.trim().isEmpty) {
       buttonText = 'Aye! Gimme a name!';
       enableButton = true;

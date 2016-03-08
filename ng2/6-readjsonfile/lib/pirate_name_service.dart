@@ -7,41 +7,34 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math' show Random;
 
+import 'package:angular2/core.dart';
+
+const _namesPath =
+    'https://www.dartlang.org/codelabs/darrrt/files/piratenames.json';
+
+@Injectable()
 class PirateNameService {
-  static final Random _indexGen = new Random();
+  final Random _indexGen = new Random();
 
-  final String _firstName;
-  final String _appellation;
+  final _names = <String>[];
+  final _appellations = <String>[];
 
-  static final List<String> _names = [];
-  static final List<String> _appellations = [];
-
-  static String randomFirstName() {
-    return _names[_indexGen.nextInt(_names.length)];
-  }
-
-  static String randomAppellation() {
-    return _appellations[_indexGen.nextInt(_appellations.length)];
-  }
-
-  static Future readyThePirates() async {
+  Future readyThePirates() async {
     if (_names.isNotEmpty && _appellations.isNotEmpty) return;
 
-    final path =
-        'https://www.dartlang.org/codelabs/darrrt/files/piratenames.json';
-
-    final jsonString = await HttpRequest.getString(path);
-    final pirateNames = JSON.decode(jsonString);
-    PirateNameService._names.addAll(pirateNames['names']);
-    PirateNameService._appellations.addAll(pirateNames['appellations']);
+    var jsonString = await HttpRequest.getString(_namesPath);
+    var pirateNames = JSON.decode(jsonString);
+    _names.addAll(pirateNames['names']);
+    _appellations.addAll(pirateNames['appellations']);
   }
 
-  PirateNameService({String firstName, String appellation})
-      : _firstName = firstName ?? randomFirstName(),
-        _appellation = appellation ?? randomAppellation();
+  String getPirateName(String firstName) {
+    if (firstName == null || firstName.trim().isEmpty) {
+      firstName = _names[_indexGen.nextInt(_names.length)];
+    }
 
-  String get pirateName =>
-      _firstName.isEmpty ? '' : '$_firstName the $_appellation';
+    var appellation = _appellations[_indexGen.nextInt(_appellations.length)];
 
-  String toString() => pirateName;
+    return '$firstName the $appellation';
+  }
 }
