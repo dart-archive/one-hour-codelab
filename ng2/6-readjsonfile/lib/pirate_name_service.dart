@@ -2,9 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:html';
 import 'dart:async';
 import 'dart:convert';
+import 'dart:html';
 import 'dart:math' show Random;
 
 import 'package:angular2/core.dart';
@@ -19,12 +19,12 @@ class PirateNameService {
   final _names = <String>[];
   final _appellations = <String>[];
 
-  String randomFirstName() {
-    return (_names[_indexGen.nextInt(_names.length)]);
+  String _randomFirstName() {
+    return _names[_indexGen.nextInt(_names.length)];
   }
 
-  String randomAppellation() {
-    return (_appellations[_indexGen.nextInt(_appellations.length)]);
+  String _randomAppellation() {
+    return _appellations[_indexGen.nextInt(_appellations.length)];
   }
 
   Future readyThePirates() async {
@@ -38,9 +38,9 @@ class PirateNameService {
 
   String getPirateName(String firstName) {
     if (firstName == null || firstName.trim().isEmpty) {
-      firstName = randomFirstName();
+      firstName = _randomFirstName();
     }
-    var appellation = randomAppellation();
+    var appellation = _randomAppellation();
 
     return '$firstName the $appellation';
   }

@@ -8,28 +8,47 @@ import 'package:angular2/core.dart';
 
 @Injectable()
 class PirateNameService {
-  static final Random _indexGen = new Random();
+  final Random _indexGen = new Random();
 
-  final List _names = [
-    'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
-    'Bill', 'Ragnar', 'Ed', 'John', 'Jane' ];
-  final List _appellations = [
-    'Jackal', 'King', 'Red', 'Stalwart', 'Axe',
-    'Young', 'Brave', 'Eager', 'Wily', 'Zesty'];
+  final _names = <String>[
+    'Anne',
+    'Mary',
+    'Jack',
+    'Morgan',
+    'Roger',
+    'Bill',
+    'Ragnar',
+    'Ed',
+    'John',
+    'Jane'
+  ];
 
-  String randomFirstName() {
-    return (_names[_indexGen.nextInt(_names.length)]);
+  final _appellations = <String>[
+    'Jackal',
+    'King',
+    'Red',
+    'Stalwart',
+    'Axe',
+    'Young',
+    'Brave',
+    'Eager',
+    'Wily',
+    'Zesty'
+  ];
+
+  String _randomFirstName() {
+    return _names[_indexGen.nextInt(_names.length)];
   }
 
-  String randomAppellation() {
-    return (_appellations[_indexGen.nextInt(_appellations.length)]);
+  String _randomAppellation() {
+    return _appellations[_indexGen.nextInt(_appellations.length)];
   }
 
   String getPirateName(String firstName) {
     if (firstName == null || firstName.trim().isEmpty) {
-      firstName = randomFirstName();
+      firstName = _randomFirstName();
     }
-    var appellation = randomAppellation();
+    var appellation = _randomAppellation();
 
     return '$firstName the $appellation';
   }
