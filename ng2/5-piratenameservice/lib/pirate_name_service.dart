@@ -4,33 +4,33 @@
 
 import 'dart:math' show Random;
 
+import 'package:angular2/core.dart';
+
+@Injectable()
 class PirateNameService {
   static final Random _indexGen = new Random();
 
-  final String _firstName;
-  final String _appellation;
-
-  static final List _names = [
+  final List _names = [
     'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
     'Bill', 'Ragnar', 'Ed', 'John', 'Jane' ];
-  static final List _appellations = [
+  final List _appellations = [
     'Jackal', 'King', 'Red', 'Stalwart', 'Axe',
     'Young', 'Brave', 'Eager', 'Wily', 'Zesty'];
 
-  static String randomFirstName() {
+  String randomFirstName() {
     return (_names[_indexGen.nextInt(_names.length)]);
   }
 
-  static String randomAppellation() {
+  String randomAppellation() {
     return (_appellations[_indexGen.nextInt(_appellations.length)]);
   }
 
-  PirateNameService({String firstName, String appellation})
-      : _firstName = firstName ?? randomFirstName(),
-        _appellation = appellation ?? randomAppellation();
+  String getPirateName(String firstName) {
+    if (firstName == null || firstName.trim().isEmpty) {
+      firstName = randomFirstName();
+    }
+    var appellation = randomAppellation();
 
-  String get pirateName =>
-      _firstName.isEmpty ? '' : '$_firstName the $_appellation';
-
-  String toString() => pirateName;
+    return '$firstName the $appellation';
+  }
 }
