@@ -9,5 +9,5 @@ import 'package:angular2/core.dart';
     templateUrl: 'badge_component.html',
     styleUrls: const ['badge_component.css'])
 class BadgeComponent {
-  String badgeName = 'Shams';
+  String badgeName = 'Sundar';
 }
