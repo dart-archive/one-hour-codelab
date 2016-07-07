@@ -17,13 +17,24 @@ Project structure
 -----------------
 
 #### `darrrt/`
-Code samples used by the Avast Ye, Pirates code lab. Each numerical version corresponds to a step in the code lab. 
+Code samples used by the original Avast Ye, Pirates code lab. Each numerical version corresponds to a step in the code lab.
 ```
 1-blankbadge/
 2-inputnamebadge/
 3-buttonbadge/
 4-classbadge/
 5-final/
+```
+
+#### `ng2/`
+Code samples used by the angular2 version of the Avast Ye, Pirates code lab. Each numerical version corresponds to a step in the code lab.
+```
+1-skeleton/
+2-blankbadge/
+3-inputnamebadge/
+4-buttonbadge/
+5-piratenameservice/
+6-readjsonfile/
 ```
 
 #### `server/`
