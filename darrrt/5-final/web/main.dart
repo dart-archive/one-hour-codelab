@@ -100,7 +100,7 @@ class PirateName {
 
   static Future readyThePirates() async {
     String path =
-        'https://www.dartlang.org/codelabs/darrrt/files/piratenames.json';
+        'https://webdev.dartlang.org/codelabs/darrrt/files/piratenames.json';
     String jsonString = await HttpRequest.getString(path);
     _parsePirateNamesFromJSON(jsonString);
   }
