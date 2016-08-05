@@ -1,6 +1,9 @@
-packages
-pubspec.lock
-.idea/
-.pub
 .DS_Store
+packages
+out
 build
+.buildlog
+.pub
+.idea
+.packages
+.swp
