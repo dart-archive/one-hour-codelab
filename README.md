@@ -55,6 +55,6 @@ This file.
 #### `runtests.sh`
 BASH script that runs dartanalyzer on all Dart source files in the web directory.
 
-[client-codelab]: https://webdev.dartlang.org/codelabs/darrrt/
-[ng2-codelab]:    https://webdev.dartlang.org/codelabs/ng2/
+[client-codelab]: https://webdev.dartlang.org/codelabs/darrrt
+[ng2-codelab]:    https://webdev.dartlang.org/codelabs/ng2
 [server-codelab]: https://dart-lang.github.io/server/codelab/
