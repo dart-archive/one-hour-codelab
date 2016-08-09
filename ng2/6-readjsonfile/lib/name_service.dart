@@ -9,15 +9,14 @@ import 'dart:math' show Random;
 
 import 'package:angular2/core.dart';
 
-const _namesPath =
-    'https://www.dartlang.org/f/piratenames.json';
+const _namesPath = 'https://www.dartlang.org/f/piratenames.json';
 
 @Injectable()
 class NameService {
   final Random _indexGen = new Random();
 
-  final _names = <String>[];
-  final _appellations = <String>[];
+  final List _names = <String>[];
+  final List _appellations = <String>[];
 
   String _randomFirstName() => _names[_indexGen.nextInt(_names.length)];
 
