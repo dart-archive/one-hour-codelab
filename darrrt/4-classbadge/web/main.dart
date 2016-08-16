@@ -59,6 +59,7 @@ class PirateName {
     }
   }
 
+  @override
   String toString() => pirateName;
 
   String get pirateName =>

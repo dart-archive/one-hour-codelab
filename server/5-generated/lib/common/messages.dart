@@ -22,5 +22,6 @@ class Pirate {
     appellation = parts[1];
   }
 
+  @override
   String toString() => name.isEmpty ? '' : '$name the $appellation';
 }

@@ -26,7 +26,7 @@ import 'dart:async' show Future;
 ButtonElement genButton;
 SpanElement badgeNameElement;
 
-main() async {
+Future main() async {
   InputElement inputField = querySelector('#inputName');
   inputField.onInput.listen(updateBadge);
   genButton = querySelector('#generateButton');
@@ -93,6 +93,7 @@ class PirateName {
     }
   }
 
+  @override
   String toString() => pirateName;
 
   String get pirateName =>
