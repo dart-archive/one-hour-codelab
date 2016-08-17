@@ -12,8 +12,5 @@ void main() {
 }
 
 void updateBadge(Event e) {
-//  querySelector('#badgeName').text = (e.target as InputElement).value;
-  InputElement ev = e.target;
-  querySelector('#badgeName').text = ev.value;
-
+  querySelector('#badgeName').text = (e.target as InputElement).value;
 }
