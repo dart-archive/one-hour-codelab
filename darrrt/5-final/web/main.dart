@@ -108,7 +108,7 @@ class PirateName {
 
   static void _parsePirateNamesFromJSON(String jsonString) {
     Map pirateNames = JSON.decode(jsonString);
-    names = pirateNames['names'];
-    appellations = pirateNames['appellations'];
+    names = pirateNames['names'] as List<String>;
+    appellations = pirateNames['appellations'] as List<String>;
   }
 }

@@ -180,7 +180,7 @@ Pirate getBadgeNameFromStorage() {
 }
 
 void addRippleEffect(MouseEvent e) {
-  var button = e.target;
+  var button = e.target as ButtonElement;
   var ripple = button.querySelector(".ripple");
 
   // we need to delete existing ripple element
