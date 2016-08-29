@@ -26,7 +26,7 @@ import 'dart:async' show Future;
 ButtonElement genButton;
 SpanElement badgeNameElement;
 
-main() async {
+Future main() async {
   InputElement inputField = querySelector('#inputName');
   inputField.onInput.listen(updateBadge);
   genButton = querySelector('#generateButton');
@@ -93,6 +93,7 @@ class PirateName {
     }
   }
 
+  @override
   String toString() => pirateName;
 
   String get pirateName =>
@@ -107,7 +108,7 @@ class PirateName {
 
   static void _parsePirateNamesFromJSON(String jsonString) {
     Map pirateNames = JSON.decode(jsonString);
-    names = pirateNames['names'];
-    appellations = pirateNames['appellations'];
+    names = pirateNames['names'] as List<String>;
+    appellations = pirateNames['appellations'] as List<String>;
   }
 }

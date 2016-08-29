@@ -10,11 +10,11 @@ import 'package:angular2/core.dart';
 class NameService {
   static final Random _indexGen = new Random();
 
-  final List _names = [
+  final List<String> _names = <String>[
     'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
     'Bill', 'Ragnar', 'Ed', 'John', 'Jane'
   ];
-  final List _appellations = [
+  final List<String> _appellations = <String>[
     'Jackal', 'King', 'Red', 'Stalwart', 'Axe',
     'Young', 'Brave', 'Eager', 'Wily', 'Zesty'
   ];

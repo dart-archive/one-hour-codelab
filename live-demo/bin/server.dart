@@ -25,7 +25,7 @@ final String _buildPath =
     Platform.script.resolve('../build/web/').toFilePath();
 final VirtualDirectory _clientDir = new VirtualDirectory(_buildPath);
 
-main() async {
+Future main() async {
   // Add a bit of logging...
   Logger.root..level = Level.INFO
              ..onRecord.listen(print);

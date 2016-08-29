@@ -11,7 +11,7 @@ import 'package:server_code_lab/client/piratesapi.dart';
 import 'package:server_code_lab/common/messages.dart';
 import 'package:server_code_lab/common/utils.dart';
 
-final String TREASURE_KEY = 'pirateName';
+final String treasureKey = 'pirateName';
 
 ButtonElement genButton;
 ButtonElement storeButton;
@@ -164,14 +164,14 @@ void setBadgeName(Pirate pirate) {
     return;
   }
   badgeNameElement.text = pirate.toString();
-  window.localStorage[TREASURE_KEY] = pirate.toString();
+  window.localStorage[treasureKey] = pirate.toString();
   storeButton
     ..disabled = false
     ..text = 'Hire pirate!';
 }
 
 Pirate getBadgeNameFromStorage() {
-  String storedName = window.localStorage[TREASURE_KEY];
+  String storedName = window.localStorage[treasureKey];
   if (storedName != null && storedName.contains(' the ')) {
     return new Pirate.fromString(storedName);
   } else {
@@ -181,7 +181,7 @@ Pirate getBadgeNameFromStorage() {
 
 void addRippleEffect(MouseEvent e) {
   var button = e.target as ButtonElement;
-  var ripple = button.querySelector(".ripple");
+  var ripple = button.querySelector('.ripple');
 
   // we need to delete existing ripple element
   if (ripple != null) {
