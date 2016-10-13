@@ -20,6 +20,8 @@ HtmlElement logElement;
 
 main() {
   // initialization
+  // TODO: Add Quill editor
+
   logElement = document.getElementById('log');
   logEntries = new Map<double, HtmlElement>();
   loadPreviousEntries();
@@ -50,15 +52,13 @@ double calculateStardate() {
 HtmlElement captureEditorView() {
   Element contentElement = document.getElementById('editor').firstChild;
 
-  var logEntryElement = new DivElement()
-    ..innerHtml = contentElement.innerHtml;
+  var logEntryElement = new DivElement()..innerHtml = contentElement.innerHtml;
 
   return logEntryElement;
 }
 
+/// Update the dom with the provided log entry.
 void displayLogEntry(double stardate, HtmlElement logEntryElement) {
-//  var logElement = document.getElementById('log');
-
   if (logElement.children.isNotEmpty) {
     logElement.insertAdjacentElement('afterBegin', new HRElement());
   }
@@ -72,14 +72,10 @@ void displayLogEntry(double stardate, HtmlElement logEntryElement) {
 
 /// Load all log entries from browser local storage.
 void loadPreviousEntries() {
-//  Element logElement = document.getElementById('log');
-  logElement.innerHtml = window.localStorage['log'] ?? '';
-
   List<String> keys = window.localStorage.keys.toList();
   keys.sort();
   for (String key in keys) {
-    var entryElement = new DivElement()
-      ..innerHtml = window.localStorage[key];
+    var entryElement = new DivElement()..innerHtml = window.localStorage[key];
     logEntries[double.parse(key)] = entryElement;
   }
   updateDisplay();
@@ -87,24 +83,26 @@ void loadPreviousEntries() {
 
 /// Save the log entry that is currently in the editor.
 void saveLog(Event _) {
-  DivElement logEntryElement = captureEditorView();
-  appendToLog(calculateStardate(), logEntryElement);
+  // TODO: Need to save the text from the editor
 }
 
+/// Update the dom to show all current log entries.
 void updateDisplay() {
   logElement.innerHtml = '';
-  List<double> keys = logEntries.keys.toList();
-  keys.sort();
-  for (double key in keys) {
-    displayLogEntry(key, logEntries[key]);
+  List<double> starDates = logEntries.keys.toList();
+  starDates.sort();
+  for (double starDate in starDates) {
+    displayLogEntry(starDate, logEntries[starDate]);
   }
 }
 
 /// Updates the content of the editor using the selected template.
 void useTemplate(Event _) {
   SelectElement templateSelectElement =
-  document.getElementById('templateSelect');
+      document.getElementById('templateSelect');
   int selectedIndex = templateSelectElement.selectedIndex;
 
   if (selectedIndex == 0) return;
+
+  // TODO: Need to clear the editor and insert the template
 }

@@ -12,7 +12,7 @@ html {
 h1.title {
   font-family: 'Orbitron', sans-serif;
   font-size: 4em;
-  margin-top: 0px;
+  margin: 0em;
   padding: 0.67em;
 }
 
@@ -66,11 +66,13 @@ button {
   background-color: #06c;
   color: white;
   border-color: #06c;
-  border-radius: 5px;
+  border-radius: 0.25em;
   font-family: inherit;
   font-size: 1.1em;
-  margin: 5px;
-  padding: 20px;
+  margin-top: .5em;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  padding: .5em;
 }
 
 #editor .ql-editor.ql-blank::before {
@@ -92,9 +94,10 @@ button {
 #content {
   margin-left: 20%;
   margin-right: 20%;
-  padding-left: 2%;
-  padding-right: 2%;
-  background: rgba(22, 22, 22, 0.8);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  background: rgba(22, 22, 22, 0.9);
   background-clip: padding-box;
 }
 
