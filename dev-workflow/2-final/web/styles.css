@@ -64,6 +64,7 @@ div.select::after {
 
 button {
   background-color: #06c;
+  color: white;
   border-color: #06c;
   border-radius: 5px;
   font-family: inherit;
