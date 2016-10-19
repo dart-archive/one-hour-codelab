@@ -1,4 +1,4 @@
-name: captains_log
+name: captains_log_2_final
 version: 0.0.1
 description: >
   A starship captain's log with a WYSIWYG editor. Uses an existing JavaScript
@@ -11,5 +11,4 @@ dependencies:
   func: ^0.1.0
   js: ^0.6.1
   browser: ^0.10.0
-  html: ^0.13.0
   dart_to_js_script_rewriter: ^1.0.1

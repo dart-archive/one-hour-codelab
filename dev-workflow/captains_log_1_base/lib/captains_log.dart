@@ -1,6 +1,5 @@
 import 'dart:html';
-
-import 'quill.dart' as quill;
+// TODO: Add import
 
 // ignoring leap years
 const int _secondsInAYear = 31536000;
@@ -17,14 +16,13 @@ final List<String> _templates = [
       'efforts to return to our timeline have failed...'
 ];
 
-quill.QuillStatic quillEditor;
 Map<double, HtmlElement> logEntries;
 HtmlElement logElement;
 
-main() {
+init() {
   // initialization
-  quillEditor = new quill.QuillStatic('#editor',
-      new quill.QuillOptionsStatic(theme: 'snow', placeholder: _prompt));
+  // TODO: Add Quill editor
+
   logElement = document.getElementById('log');
   logEntries = new Map<double, HtmlElement>();
   loadPreviousEntries();
@@ -86,11 +84,7 @@ void loadPreviousEntries() {
 
 /// Save the log entry that is currently in the editor.
 void saveLog(Event _) {
-  DivElement logEntryElement = captureEditorView();
-  appendToLog(calculateStardate(), logEntryElement);
-
-  // Clear the editor.
-  quillEditor.deleteText(0, quillEditor.getLength());
+  // TODO: Need to save the text from the editor
 }
 
 /// Update the dom to show all current log entries.
@@ -111,7 +105,5 @@ void useTemplate(Event _) {
 
   if (selectedIndex == 0) return;
 
-  quillEditor.deleteText(0, quillEditor.getLength());
-  String templateText = _templates[templateSelectElement.selectedIndex - 1];
-  quillEditor.insertText(0, templateText, 'api');
+  // TODO: Need to clear the editor and insert the template
 }
