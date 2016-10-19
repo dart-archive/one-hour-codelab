@@ -135,7 +135,7 @@ abstract class QuillStatic {
   /*external formatsType getFormat([RangeStatic range]);*/
   /*external formatsType getFormat(num index, [num length]);*/
   external getFormat([dynamic /*RangeStatic|num*/ range_index, num length]);
-  external void removeFormat(Number index, Number length,
+  external void removeFormat(num index, num length,
       [String /*'api'|'user'|'silent'*/ source]);
   external void blur();
   external void focus();

@@ -7,3 +7,14 @@ build
 .idea
 .packages
 .swp
+
+/**/bazel-bin
+/**/bazel-captains_log_2_final
+/**/bazel-genfiles
+/**/bazel-out
+/**/bazel-testlogs
+/**/.bazelify
+/**/BUILD
+/**/WORKSPACE
+/**/packages.bzl
+
