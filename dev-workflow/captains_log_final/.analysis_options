@@ -5,12 +5,11 @@
 
 analyzer:
   strong-mode:
-    - implicit-downcasts: false
-    - implicit-dynamic: false
+    implicit-casts: false
+    implicit-dynamic: false
   exclude:
     - lib/quill.dart
 # linter:
 #   rules:
 #     # see catalogue here: http://dart-lang.github.io/linter/lints/
 #     - hash_and_equals
-
