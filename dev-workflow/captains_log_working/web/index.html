@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Captain's Log</title>
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Bungee+Hairline|Jura|Orbitron"
+        rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <main id="content">
+      <h1 class="title">Captain's Log</h1>
+      <div class="buttons">
+        <div class="select">
+          <select id="templateSelect">
+            <option disabled selected>Select a Template</option>
+            <option id="template1">Sentient space anomaly</option>
+            <option id="template2">Impending war with hostile species</option>
+            <option id="template3">Ship caught in time distortion</option>
+          </select>
+        </div>
+        <button id="save">Save to Memory Banks</button>
+      </div>
+      <section id="log"></section>
+    </main>
+  </body>
+  <script type="application/dart" src="main.dart"></script>
+  <script src="packages/browser/dart.js"></script>
+</html>

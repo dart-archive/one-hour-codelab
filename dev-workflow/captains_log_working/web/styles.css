@@ -1,0 +1,107 @@
+body {
+  padding: 0em;
+  margin: 0em;
+}
+
+html {
+  background: #222;
+  color: white;
+  font-family: 'Jura', sans-serif;
+}
+
+h1.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4em;
+  margin: 0em;
+  padding: 0.67em;
+}
+
+h2.stardate {
+  font-family: 'Bungee Hairline', cursive;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #222;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  padding: 5px;
+  padding-right: 18px;
+}
+
+select:focus {
+  outline: none;
+}
+
+select:active {
+  background-color: #222;
+}
+
+div.select {
+  border-bottom: 1px solid gray;
+  display: inline-block;
+  height: 100%;
+  position: relative;
+}
+
+div.select::after {
+  font-family: 'Material Icons';
+  content: '\E5C5';
+  position: absolute;
+  right: 2px;
+  top: 6px;
+  pointer-events: none;
+}
+
+button {
+  background-color: #06c;
+  color: white;
+  border-color: #06c;
+  border-radius: 0.25em;
+  font-family: inherit;
+  font-size: 1.1em;
+  margin-top: .5em;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  padding: .5em;
+}
+
+#editor .ql-editor.ql-blank::before {
+  color: white;
+}
+
+.ql-toolbar .ql-stroke {
+  stroke: white;
+}
+
+.ql-toolbar .ql-fill {
+  fill: white;
+}
+
+.ql-toolbar.ql-snow .ql-picker-label {
+  color: white;
+}
+
+#content {
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  background: rgba(22, 22, 22, 0.9);
+  background-clip: padding-box;
+}
+
+#editor {
+  height: 20em;
+  font-size: 1.1em;
+}
