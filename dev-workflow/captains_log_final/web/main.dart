@@ -1,4 +1,4 @@
-import 'package:captains_log_2_final/captains_log.dart';
+import 'package:captains_log/captains_log.dart';
 
 main() {
   init();

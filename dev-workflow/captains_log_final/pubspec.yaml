@@ -1,4 +1,4 @@
-name: captains_log_2_final
+name: captains_log
 version: 0.0.1
 description: >
   A starship captain's log with a WYSIWYG editor. Uses an existing JavaScript

@@ -9,7 +9,7 @@ build
 .swp
 
 /**/bazel-bin
-/**/bazel-captains_log_2_final
+/**/bazel-captains_log*
 /**/bazel-genfiles
 /**/bazel-out
 /**/bazel-testlogs

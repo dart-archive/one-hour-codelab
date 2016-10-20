@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:captains_log_2_final/quill.dart' as quill;
+import 'package:captains_log/quill.dart' as quill;
 
 // ignoring leap years
 const int _secondsInAYear = 31536000;
