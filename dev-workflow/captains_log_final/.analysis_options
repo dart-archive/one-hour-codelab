@@ -9,6 +9,12 @@ analyzer:
     implicit-dynamic: false
   exclude:
     - lib/quill.dart
+    - .bazelify/**
+    - bazel-bin/**
+    - bazel-captains_log_final/**
+    - bazel-genfiles/**
+    - bazel-out/**
+    - bazel-testlogs/**
 # linter:
 #   rules:
 #     # see catalogue here: http://dart-lang.github.io/linter/lints/

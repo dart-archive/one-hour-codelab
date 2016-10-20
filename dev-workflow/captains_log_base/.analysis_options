@@ -3,12 +3,17 @@
 # The commented part below is just for inspiration. Read the guide here:
 # https://github.com/dart-lang/sdk/tree/master/pkg/analyzer#configuring-the-analyzer
 
-# analyzer:
+analyzer:
 #   strong-mode:
 #     implicit-casts: false
 #     implicit-dynamic: false
-#     exclude:
-#       path/to/excluded/files/**
+  exclude:
+    - .bazelify/**
+    - bazel-bin/**
+    - bazel-captains_log_final/**
+    - bazel-genfiles/**
+    - bazel-out/**
+    - bazel-testlogs/**
 # linter:
 #   rules:
 #     # see catalogue here: http://dart-lang.github.io/linter/lints/
