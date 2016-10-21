@@ -19,9 +19,9 @@ final List<String> _templates = [
 
 quill.QuillStatic quillEditor;
 Map<double, HtmlElement> logEntries;
-HtmlElement logElement;
+Element logElement;
 
-init() {
+void init() {
   // initialization
   quillEditor = new quill.QuillStatic('#editor',
       new quill.QuillOptionsStatic(theme: 'snow', placeholder: _prompt));
@@ -53,7 +53,7 @@ double calculateStardate() {
 /// Copy html elements from the editor view and return them inside a new
 /// DivElement.
 HtmlElement captureEditorView() {
-  Element contentElement = document.getElementById('editor').firstChild;
+  Element contentElement = document.getElementById('editor').children.first;
 
   var logEntryElement = new DivElement()..innerHtml = contentElement.innerHtml;
 
@@ -86,7 +86,7 @@ void loadPreviousEntries() {
 
 /// Save the log entry that is currently in the editor.
 void saveLog(Event _) {
-  DivElement logEntryElement = captureEditorView();
+  HtmlElement logEntryElement = captureEditorView();
   appendToLog(calculateStardate(), logEntryElement);
 
   // Clear the editor.
@@ -106,7 +106,7 @@ void updateDisplay() {
 /// Updates the content of the editor using the selected template.
 void useTemplate(Event _) {
   SelectElement templateSelectElement =
-      document.getElementById('templateSelect');
+      document.getElementById('templateSelect') as SelectElement;
   int selectedIndex = templateSelectElement.selectedIndex;
 
   if (selectedIndex == 0) return;

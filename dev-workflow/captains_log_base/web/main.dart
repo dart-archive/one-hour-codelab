@@ -1,5 +1,5 @@
 import 'package:captains_log/captains_log.dart';
 
-main() {
+void main() {
   init();
 }
