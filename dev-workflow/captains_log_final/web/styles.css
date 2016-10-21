@@ -1,11 +1,11 @@
 body {
+  background: url(https://cdn.spacetelescope.org/archives/images/wallpaper2/heic0601a.jpg) no-repeat center center fixed;
+  background-size: cover;
   padding: 0em;
   margin: 0em;
 }
 
 html {
-  background: url(https://cdn.spacetelescope.org/archives/images/wallpaper2/heic0601a.jpg) no-repeat center center fixed;
-  background-size: cover;
   color: white;
   font-family: 'Jura', sans-serif;
 }
