@@ -6,20 +6,19 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.28.1"
+    version: "0.29.0"
   angular2:
     description:
       name: angular2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0-beta.22"
+    version: "2.0.0"
   angular2_components:
     description:
-      ref: f33be6
-      resolved-ref: f33be6b3307535e9028530fc4def90cc06bc25d5
-      url: "https://github.com/dart-lang/angular2_components"
-    source: git
-    version: "0.1.0"
+      name: angular2_components
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   args:
     description:
       name: args
@@ -223,7 +222,7 @@ packages:
       name: shelf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.6"
+    version: "0.6.7+1"
   shelf_static:
     description:
       name: shelf_static
