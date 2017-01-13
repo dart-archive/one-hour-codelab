@@ -1,6 +1,7 @@
-// Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+// Copyright (c) 2017, the Dart project authors.
+// All rights reserved. Use of this source code
+// is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
 import 'dart:math' show Random;
 
@@ -10,11 +11,11 @@ import 'package:angular2/core.dart';
 class NameService {
   static final Random _indexGen = new Random();
 
-  final List<String> _names = <String>[
+  final _names = <String>[
     'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
     'Bill', 'Ragnar', 'Ed', 'John', 'Jane'
   ];
-  final List<String> _appellations = <String>[
+  final _appellations = <String>[
     'Jackal', 'King', 'Red', 'Stalwart', 'Axe',
     'Young', 'Brave', 'Eager', 'Wily', 'Zesty'
   ];

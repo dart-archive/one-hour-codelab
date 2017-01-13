@@ -1,6 +1,7 @@
-// Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+// Copyright (c) 2017, the Dart project authors.
+// All rights reserved. Use of this source code
+// is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
 import 'dart:async';
 import 'dart:convert';
@@ -13,12 +14,13 @@ const _namesPath = 'https://www.dartlang.org/f/piratenames.json';
 
 @Injectable()
 class NameService {
-  final Random _indexGen = new Random();
+  static final Random _indexGen = new Random();
 
-  final List _names = <String>[];
-  final List _appellations = <String>[];
+  final _names = <String>[];
+  final _appellations = <String>[];
 
-  String _randomFirstName() => _names[_indexGen.nextInt(_names.length)];
+  String _randomFirstName() =>
+      _names[_indexGen.nextInt(_names.length)];
 
   String _randomAppellation() =>
       _appellations[_indexGen.nextInt(_appellations.length)];
