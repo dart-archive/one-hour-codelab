@@ -1,10 +1,10 @@
 name: pirate_badge
-description: QuickStart
+description: A simple AngularDart app
 version: 0.0.1
 environment:
-  sdk: '>=1.19.0 <2.0.0'
+  sdk: '>=1.23.0 <2.0.0'
 dependencies:
-  angular2: ^2.2.0
+  angular2: ^3.0.0
 dev_dependencies:
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
