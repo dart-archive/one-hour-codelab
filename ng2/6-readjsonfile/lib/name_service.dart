@@ -8,7 +8,7 @@ import 'dart:convert';
 import 'dart:html';
 import 'dart:math' show Random;
 
-import 'package:angular2/core.dart';
+import 'package:angular2/angular2.dart';
 
 const _namesPath = 'https://www.dartlang.org/f/piratenames.json';
 

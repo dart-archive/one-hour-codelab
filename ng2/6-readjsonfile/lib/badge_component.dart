@@ -5,7 +5,7 @@
 
 import 'dart:async';
 
-import 'package:angular2/core.dart';
+import 'package:angular2/angular2.dart';
 
 import 'name_service.dart';
 
