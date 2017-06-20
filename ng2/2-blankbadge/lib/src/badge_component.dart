@@ -6,9 +6,10 @@
 import 'package:angular2/angular2.dart';
 
 @Component(
-    selector: 'pirate-badge',
-    templateUrl: 'badge_component.html',
-    styleUrls: const ['badge_component.css'])
+  selector: 'pirate-badge',
+  templateUrl: 'badge_component.html',
+  styleUrls: const ['badge_component.css'],
+)
 class BadgeComponent {
   String badgeName = 'Sundar';
 }

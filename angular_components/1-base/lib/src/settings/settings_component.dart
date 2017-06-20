@@ -2,26 +2,17 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:async';
-
 import 'package:angular2/angular2.dart';
-import 'package:angular_components/angular_components.dart';
-import 'package:components_codelab/lottery/lottery.dart';
-import 'package:components_codelab/settings/settings.dart';
+import 'package:components_codelab/src/lottery/lottery.dart';
+import 'package:components_codelab/src/settings/settings.dart';
+
+import 'dart:async';
 
 @Component(
   selector: 'settings-component',
   styleUrls: const ['settings_component.css'],
   templateUrl: 'settings_component.html',
-  directives: const [
-    MaterialCheckboxComponent,
-    MaterialExpansionPanel,
-    MaterialExpansionPanelSet,
-    MaterialRadioComponent,
-    MaterialRadioGroupComponent,
-    NgFor
-  ],
-  providers: const [materialProviders],
+  directives: const [NgFor],
 )
 class SettingsComponent implements OnInit {
   final initialCashOptions = [0, 10, 100, 1000];
@@ -80,7 +71,6 @@ class SettingsComponent implements OnInit {
     }
     years = settings.years;
   }
-
 
   void settingsUpdated() {
     settings.initialCash = initialCash;

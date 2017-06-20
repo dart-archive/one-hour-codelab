@@ -5,6 +5,6 @@
 import 'package:angular2/platform/browser.dart';
 import 'package:components_codelab/lottery_simulator.dart';
 
-main() {
+void main() {
   bootstrap(AppComponent);
 }

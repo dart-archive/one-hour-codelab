@@ -6,12 +6,12 @@ import 'dart:async';
 
 import 'package:angular2/angular2.dart';
 import 'package:angular_components/angular_components.dart';
-import 'package:components_codelab/help/help.dart';
-import 'package:components_codelab/scores/scores.dart';
-import 'package:components_codelab/settings/settings.dart';
-import 'package:components_codelab/settings/settings_component.dart';
-import 'package:components_codelab/stats/stats.dart';
-import 'package:components_codelab/visualize_winnings/visualize_winnings.dart';
+import 'src/help/help.dart';
+import 'src/scores/scores.dart';
+import 'src/settings/settings.dart';
+import 'src/settings/settings_component.dart';
+import 'src/stats/stats.dart';
+import 'src/visualize_winnings/visualize_winnings.dart';
 import 'package:intl/intl.dart';
 
 const _fastPulse = const Duration(milliseconds: 5);

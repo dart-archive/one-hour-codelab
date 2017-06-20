@@ -19,8 +19,7 @@ class NameService {
   final _names = <String>[];
   final _appellations = <String>[];
 
-  String _randomFirstName() =>
-      _names[_indexGen.nextInt(_names.length)];
+  String _randomFirstName() => _names[_indexGen.nextInt(_names.length)];
 
   String _randomAppellation() =>
       _appellations[_indexGen.nextInt(_appellations.length)];

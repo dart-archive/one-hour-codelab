@@ -6,9 +6,7 @@ import 'dart:html';
 
 import 'package:angular2/angular2.dart';
 
-enum Color {
-  gray, green, gold
-}
+enum Color { gray, green, gold }
 
 @Component(
   selector: 'visualize-winnings',

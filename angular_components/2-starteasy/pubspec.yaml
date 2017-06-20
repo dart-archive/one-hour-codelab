@@ -3,7 +3,7 @@ description: An AngularDart app that simulates a lottery
 version: 0.0.1
 
 environment:
-  sdk: '>=1.23.0 <2.0.0'
+  sdk: '>=1.24.0 <2.0.0'
 
 dependencies:
   angular2: ^3.0.0
@@ -20,3 +20,7 @@ transformers:
     resolved_identifiers:
       Random: 'dart:math'
 - dart_to_js_script_rewriter
+
+web:
+  compiler:
+    debug: dartdevc
