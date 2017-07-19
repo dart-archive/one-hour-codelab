@@ -1,7 +1,6 @@
 Dart Code Lab Samples
 ============================
-
-[![Build Status](https://drone.io/github.com/dart-lang/one-hour-codelab/status.png)](https://drone.io/github.com/dart-lang/one-hour-codelab/latest)
+[![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
 
 These are small Dart samples used by the following codelabs:
 
