@@ -1,0 +1,27 @@
+/*
+ * Copyright (c) 2016, the Dart project authors.  Please see the AUTHORS file
+ * for details. All rights reserved. Use of this source code is governed by a
+ * BSD-style license that can be found in the LICENSE file.
+ */
+
+/*
+ * NOTE: SASS files are not used during the build step of this package and are
+ * provided as reference only. These .scss files were used to generate the
+ * corresponding .css files in a separate process. We are working on a solution
+ * to include CSS generation from SASS files during the build process.
+ */
+
+/// Consider using button-base or material-button instead from:
+///     lib/src/components/material_button/_mixins.scss
+/// These mixins provide more of the typical values used in buttons.
+///
+
+/// Default styles that should be provided for all elements that use
+/// the buttonDecorator directive.
+[buttonDecorator] {
+  cursor: pointer;
+
+  &.is-disabled {
+    cursor: not-allowed;
+  }
+}
