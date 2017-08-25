@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
 import 'src/help/help.dart';
 import 'src/scores/scores.dart';

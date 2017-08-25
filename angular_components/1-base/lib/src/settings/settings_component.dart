@@ -2,9 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:angular2/angular2.dart';
-import 'package:components_codelab/src/lottery/lottery.dart';
-import 'package:components_codelab/src/settings/settings.dart';
+import 'package:angular/angular.dart';
+import '../lottery/lottery.dart';
+import '../settings/settings.dart';
 
 import 'dart:async';
 
